@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/x-icon">       
+    <title>Annapurna Sewa | Professional Business Services</title>
+    <link rel="canonical" href="https://annapurnasewa.com/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3B82F6;      /* Vibrant Blue - Trust & Professionalism */
+            --primary-dark: #2563EB;
+            --secondary: #EF4444;    /* Vibrant Red - Energy & Urgency */
+            --secondary-dark: #DC2626;
+            --accent: #F59E0B;       /* Golden Yellow - Success & Quality */
+            --accent-light: #FBBF24;
+            --mountain: #10B981;     /* Emerald Green - Nature & Authenticity */
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --gray: #64748B;
+            --success: #10B981;
+            --shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --radius: 16px;
+            --gradient-primary: linear-gradient(135deg, var(--primary), #1D4ED8);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary), #B91C1C);
+            --gradient-accent: linear-gradient(135deg, var(--accent), #D97706);
+            --gradient-mountain: linear-gradient(135deg, #10B981, #059669, #047857);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.98));
+            color: var(--dark);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center bottom;
+            background-attachment: fixed;
+            opacity: 0.25;
+            z-index: -1;
+            filter: brightness(1.1) contrast(1.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-image {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-mountain);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            cursor: default !important;
+        }
+        
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text h1 {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .logo-text p span.nepali {
+            font-family: 'Noto Sans Devanagari';
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(16, 185, 129, 0.1));
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 2px solid rgba(245, 158, 11, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .trust-badge i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .trust-badge span {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+        
+        .trust-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
+        }
+        
+        .trust-badge:hover i {
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: 700;
+            font-family: 'Noto Sans Devanagari';
+        }
+        
+        /* Services Grid - Responsive */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+        
+        @media (max-width: 1100px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        .service-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            cursor: default !important;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+        
+        .service-card:nth-child(2)::before {
+            background: var(--gradient-secondary);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: white;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            transition: transform 0.3s ease;
+            cursor: default !important;
+        }
+        
+        .service-card:nth-child(2) .service-icon {
+            background: var(--gradient-secondary);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+        
+        .service-card h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            cursor: default !important;
+        }
+        
+        .service-subtitle {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: default !important;
+        }
+        
+        .service-subtitle span {
+            font-family: 'Noto Sans Devanagari';
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .service-features {
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            cursor: default !important;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            color: var(--gray);
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            opacity: 0.9;
+            cursor: default !important;
+        }
+        
+        .feature-list li i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 2px;
+            transition: transform 0.3s ease;
+            cursor: default !important;
+        }
+        
+        .service-card:hover .feature-list li i {
+            transform: scale(1.2);
+        }
+        
+        .feature-list li span.nepali {
+            font-family: 'Noto Sans Devanagari';
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .feature-list li span.nepali {
+            color: var(--primary-dark);
+        }
+        
+        /* Button Styles */
+        .primary-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .primary-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .primary-btn:hover::before {
+            left: 100%;
+        }
+        
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+        
+        .secondary-btn {
+            background: var(--gradient-secondary);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--radius);
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .secondary-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .secondary-btn:hover::before {
+            left: 100%;
+        }
+        
+        .secondary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.4);
+        }
+        
+        /* Flight Form Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid var(--primary);
+        }
+        
+        @keyframes modalSlideIn {
+            from { opacity: 0; transform: translateY(-50px) scale(0.9); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .modal-header h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+            background: var(--light);
+        }
+        
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1.1rem 1.2rem;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: #F8FAFC;
+            font-weight: 500;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-note {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        .autocomplete-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .autocomplete-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            margin-top: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .autocomplete-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #F1F5F9;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .autocomplete-item:hover {
+            background: #F8FAFC;
+        }
+        
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+        
+        .airport-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        
+        .airport-location {
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        .form-control.with-autocomplete {
+            padding-right: 40px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            pointer-events: none;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 5rem 0;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            font-weight: 800;
+            position: relative;
+        }
+        
+        .faq-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .faq-category-btn {
+            background: white;
+            border: 2px solid #E2E8F0;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark);
+        }
+        
+        .faq-category-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        .faq-category-btn:hover:not(.active) {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+        
+        .faq-content {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 2px solid #E2E8F0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #F8FAFC;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: #F8FAFC;
+            border-top: 1px solid transparent;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 2rem;
+            max-height: 500px;
+            border-top-color: #E2E8F0;
+        }
+        
+        .faq-answer p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer .nepali {
+            font-family: 'Noto Sans Devanagari';
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark), #0F172A);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=30');
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .whatsapp-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .whatsapp-contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .whatsapp-contact:hover::before {
+            left: 100%;
+        }
+        
+        .whatsapp-contact:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 1001;
+            animation: slideIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            min-width: 300px;
+            border-left: 5px solid var(--accent);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        /* Mountain Range Decoration */
+        .mountain-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(16, 185, 129, 0.15), transparent);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .logo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .trust-badge {
+                margin-top: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                text-align: center;
+            }
+            
+            .modal-content {
+                padding: 2rem;
+            }
+            
+            .faq-title {
+                font-size: 2rem;
+            }
+            
+            .faq-category-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            
+            .faq-question {
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .faq-item.active .faq-answer {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Floating Elements */
+        .floating-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-mountain);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            z-index: 50;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating-icon:hover {
+            transform: scale(1.1) rotate(10deg);
+            animation: none;
+        }
+        
+        .language-badge {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50px;
+            padding: 8px 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            z-index: 50;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        /* Flying Planes Animation */
+        .flying-plane {
+            position: absolute;
+            z-index: 1;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            pointer-events: none;
+            cursor: default !important;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            animation: fly linear infinite;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(calc(100vh * var(--y-movement))) rotate(10deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Flying Planes -->
+    <div class="flying-plane" style="top: 20%; --y-movement: 0.2; animation-duration: 25s; animation-delay: 0s;"><i class="fas fa-plane"></i></div>
+    <div class="flying-plane" style="top: 40%; --y-movement: -0.1; animation-duration: 30s; animation-delay: 5s;"><i class="fas fa-plane"></i></div>
+    <div class="flying-plane" style="top: 60%; --y-movement: 0.3; animation-duration: 35s; animation-delay: 10s;"><i class="fas fa-plane"></i></div>
+    <div class="flying-plane" style="top: 80%; --y-movement: 0.1; animation-duration: 40s; animation-delay: 15s;"><i class="fas fa-plane"></i></div>
+
+    <!-- Language Badge -->
+    <div class="language-badge">
+        <i class="fas fa-globe-asia"></i>
+        <span>EN / <span class="nepali">ने</span></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-image">
+                        <img src="safld.png" alt="Annapurna Sewa Logo">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Annapurna Sewa</h1>
+                        <p><i class="fas fa-mountain"></i> <span class="nepali">अन्नपूर्ण सेवा</span> | Professional Business Services</p>
+                    </div>
+                </div>
+                <div class="trust-badge" id="trustBadge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Trusted Service & Reliable Support</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Your Trusted Partner for Professional Services</h2>
+            <p>Get expert assistance with <span class="highlight">Work Permit Renewal</span> and <span class="highlight">Flight Ticket Booking</span>. Fast, reliable, and professional services tailored to your needs.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Work Permit Renewal Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Work Permit Renewal</h3>
+                    <div class="service-subtitle">
+                        <i class="fas fa-passport"></i>
+                        <span>श्रम स्वीकृति नवीकरण</span> • Professional Assistance
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">छिटो, सजिलो, भरपर्दो</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">वर्क पर्मिट नवीकरण, न्यूनतम खर्चमै</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">सजिलो प्रोसेस, फास्ट रिजल्ट</span></li>
+                        </ul>
+                    </div>
+                    <button class="primary-btn" id="workPermitBtn">
+                        <i class="fab fa-whatsapp"></i>
+                        Send WhatsApp Request
+                    </button>
+                </div>
+
+                <!-- Flight Ticket Card -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Flight Ticket Booking</h3>
+                    <div class="service-subtitle">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span>विमान टिकट</span> • Best Price Guarantee
+                    </div>
+                    <div class="service-features">
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">उत्कृष्ट सेवा</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">विश्वसनीय अनुभव</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="nepali">सस्तो टिकट, खुशी यात्रा</span></li>
+                        </ul>
+                    </div>
+                    <button class="secondary-btn" id="flightTicketBtn">
+                        <i class="fas fa-search"></i>
+                        Book Flight Ticket
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-categories">
+                <button class="faq-category-btn active" data-category="flight">
+                    <i class="fas fa-plane"></i>
+                    Flight Ticket Booking
+                </button>
+                <button class="faq-category-btn" data-category="permit">
+                    <i class="fas fa-file-contract"></i>
+                    Work Permit Renewal
+                </button>
+            </div>
+            
+            <!-- Flight Ticket FAQ -->
+            <div class="faq-content active" id="flight-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        टिकट बुकिङ कसरि गर्ने?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">तपाईंले हाम्रो वेबसाइटमा उडान खोज्नुभयो → उपयुक्त फ्लाइट चयन → विवरण भर्नुहोस् → भुक्तानी गर्नुहोस्।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        भुक्तानीका विकल्पहरू के के छन्?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">हामीले बैंक कार्ड, मोबाइल बैंकिङ, e-wallet र नेट बैंकिङ विकल्पहरू समर्थन गर्छौं।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        क्यान्सल र रिफन्ड नीतिहरू के छन्?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">टिकट अनुसार फरक हुन्छ। हाम्रो सिस्टमले तत्काल रिफन्ड वा क्रेडिट विकल्प देखाउँछ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        बुकिङ कन्फर्म भएको कसरी थाहा पाउने?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">सफल भुक्तानीपछि तपाईंको ईमेल र SMS मा कन्फर्मेसन पठाइन्छ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        फ्लाइट समय/गेट परिवर्तन भए के गर्ने?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">हाम्रो साइटमा "My Bookings" बाट अपडेट हेर्न सक्नुहुन्छ। तत्काल नोटिफिकेशन पनि पठाइन्छ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        सस्तो टिकट पाउने सुझाव के छन्?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">अग्रिम बुकिङ गर्नुहोस्, फ्लेक्सिबल मितिहरू रोज्नुहोस्, र अफर/डिस्काउन्ट हेर्नुहोस्।</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Work Permit FAQ -->
+            <div class="faq-content" id="permit-faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        वर्क पर्मिट नवीकरण कसरि गर्ने?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">अनलाइन फर्म भर्नुहोस् → आवश्यक कागजात अपलोड गर्नुहोस् → शुल्क भुक्तानी गर्नुहोस् → प्रगति ट्र्याक गर्नुहोस्।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        कति समयमा नवीकरण हुन्छ?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">सामान्यतया 7–15 कार्य दिनमा पूरा हुन्छ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        कुन कागजातहरू चाहिन्छ?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">पासपोर्ट/पहिचान प्रमाण, पुरानो वर्क पर्मिट, हालको रोजगार प्रमाणपत्र।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        फेस-टू-फेस जानुपर्छ कि?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">हाम्रो अनलाइन सेवा पूर्ण डिजिटल छ। केही विशेष अवस्थामा मात्र कार्यालय जानुपर्ने हुन सक्छ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        फीस कति हुन्छ?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">न्यूनतम खर्चमै सेवा उपलब्ध छ। शुल्क तपाईंको आवेदन अनुसार फरक पर्न सक्छ।</span></p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        नवीकरण स्टाटस कसरी ट्र्याक गर्ने?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p><span class="nepali">तपाईंको आवेदन नम्बर/ईमेल प्रयोग गरेर हाम्रो वेबसाइटमा "Track Application" बाट हेर्न सक्नुहुन्छ।</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flight Booking Modal -->
+    <div class="modal-overlay" id="flightModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plane"></i> Flight Ticket Booking</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="flightForm">
+                <div class="form-group">
+                    <label for="fromLocation">
+                        <i class="fas fa-plane-departure"></i>
+                        Departure From
+                    </label>
+                    <div class="autocomplete-container">
+                        <input type="text" id="fromLocation" class="form-control with-autocomplete" placeholder="e.g., Kathmandu, Nepal" required>
+                        <i class="fas fa-search search-icon"></i>
+                        <div class="autocomplete-dropdown" id="fromDropdown"></div>
+                    </div>
+                    <div class="form-note">Start typing to search airports</div>
+                </div>
+                <div class="form-group">
+                    <label for="toLocation">
+                        <i class="fas fa-plane-arrival"></i>
+                        Destination To
+                    </label>
+                    <div class="autocomplete-container">
+                        <input type="text" id="toLocation" class="form-control with-autocomplete" placeholder="e.g., Doha, Qatar" required>
+                        <i class="fas fa-search search-icon"></i>
+                        <div class="autocomplete-dropdown" id="toDropdown"></div>
+                    </div>
+                    <div class="form-note">Start typing to search airports</div>
+                </div>
+                <div class="form-group">
+                    <label for="travelDate">
+                        <i class="fas fa-calendar-alt"></i>
+                        Preferred Travel Date
+                    </label>
+                    <input type="date" id="travelDate" class="form-control" required>
+                    <div class="form-note">Select your preferred departure date</div>
+                </div>
+                <div class="form-group">
+                    <label for="passengers">
+                        <i class="fas fa-users"></i>
+                        Number of Passengers
+                    </label>
+                    <select id="passengers" class="form-control" required>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5+">5+ Passengers (Contact for details)</option>
+                    </select>
+                </div>
+                <button type="submit" class="primary-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    Send Request via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="mountain-decoration"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Annapurna Sewa</h3>
+                    <p>Professional Business Services • Reliable & Trustworthy</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;"><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                </div>
+                <div class="footer-contact">
+                    <a href="https://wa.me/9779802398981" class="whatsapp-contact" target="_blank" id="footerWhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                        Contact on WhatsApp
+                    </a>
+                    <p style="margin-top: 15px; opacity: 0.9;">Quick Response • Professional Service</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="floating-icon" id="floatingWhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Message sent to WhatsApp!</span>
+    </div>
+
+    <script>
+        // Elements
+        const workPermitBtn = document.getElementById('workPermitBtn');
+        const flightTicketBtn = document.getElementById('flightTicketBtn');
+        const flightModal = document.getElementById('flightModal');
+        const closeModal = document.getElementById('closeModal');
+        const flightForm = document.getElementById('flightForm');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notificationText');
+        const floatingWhatsApp = document.getElementById('floatingWhatsApp');
+        const footerWhatsApp = document.getElementById('footerWhatsApp');
+        const trustBadge = document.getElementById('trustBadge');
+        
+        // WhatsApp phone number
+        const whatsappNumber = "9779802398981";
+        const defaultMessage = "नमस्कार सर, म फ्लाइट र श्रम स्वीकृति नवीकरण सम्बन्धमा सम्पर्क गरेको हुँ।";
+        
+        // Create more flying planes dynamically
+        function createFlyingPlanes() {
+            const planeContainer = document.body;
+            const planeCount = 8;
+            
+            for(let i = 0; i < planeCount; i++) {
+                const plane = document.createElement('div');
+                plane.className = 'flying-plane';
+                plane.innerHTML = '<i class="fas fa-plane"></i>';
+                
+                // Random properties
+                const top = Math.random() * 80 + 10; // 10% to 90%
+                const duration = 20 + Math.random() * 30; // 20s to 50s
+                const delay = Math.random() * 20; // 0s to 20s delay
+                const yMovement = (Math.random() - 0.5) * 0.4; // -0.2 to 0.2
+                const size = 1.5 + Math.random(); // 1.5rem to 2.5rem
+                
+                plane.style.cssText = `
+                    top: ${top}%;
+                    --y-movement: ${yMovement};
+                    animation-duration: ${duration}s;
+                    animation-delay: ${delay}s;
+                    font-size: ${size}rem;
+                    opacity: ${0.05 + Math.random() * 0.15};
+                `;
+                
+                planeContainer.appendChild(plane);
+            }
+        }
+        
+        // Call function to create planes
+        createFlyingPlanes();
+        
+        // Trust badge animation
+        trustBadge.addEventListener('click', function() {
+            // Create floating particles animation
+            for(let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.width = '8px';
+                particle.style.height = '8px';
+                particle.style.background = 'linear-gradient(135deg, var(--accent), var(--primary))';
+                particle.style.borderRadius = '50%';
+                particle.style.zIndex = '1000';
+                particle.style.pointerEvents = 'none';
+                
+                const rect = trustBadge.getBoundingClientRect();
+                particle.style.left = rect.left + rect.width/2 + 'px';
+                particle.style.top = rect.top + rect.height/2 + 'px';
+                
+                document.body.appendChild(particle);
+                
+                // Animate particle
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 50 + Math.random() * 100;
+                const duration = 1000 + Math.random() * 1000;
+                
+                particle.animate([
+                    { 
+                        transform: 'translate(0, 0) scale(1)',
+                        opacity: 1
+                    },
+                    { 
+                        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            }
+            
+            // Animate badge itself
+            trustBadge.animate([
+                { transform: 'scale(1)' },
+                { transform: 'scale(1.2)' },
+                { transform: 'scale(1)' }
+            ], {
+                duration: 500,
+                easing: 'ease-in-out'
+            });
+        });
+        
+        // Work Permit Renewal - Direct WhatsApp Message
+        workPermitBtn.addEventListener('click', function() {
+            const message = "नमस्कार सर, म श्रम स्वीकृति नवीकरण सम्बन्धमा सम्पर्क गरेको हुँ।";
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Show notification
+            showNotification("Work permit renewal request sent via WhatsApp");
+        });
+        
+        // Flight Ticket - Open Modal
+        flightTicketBtn.addEventListener('click', function() {
+            flightModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close Modal
+        closeModal.addEventListener('click', function() {
+            flightModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        flightModal.addEventListener('click', function(e) {
+            if (e.target === flightModal) {
+                flightModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Flight Form Submission
+        flightForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fromLocation = document.getElementById('fromLocation').value;
+            const toLocation = document.getElementById('toLocation').value;
+            const travelDate = document.getElementById('travelDate').value;
+            const passengers = document.getElementById('passengers').value;
+            
+            // Format date
+            const formattedDate = new Date(travelDate).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Create message
+            const message = `FLIGHT BOOKING REQUEST:
+            
+• From: ${fromLocation}
+• To: ${toLocation}
+• Travel Date: ${formattedDate}
+• Passengers: ${passengers}
+
+Please book the flight for me and provide the details.`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            // Close modal
+            flightModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            flightForm.reset();
+            
+            // Set default date
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('travelDate').value = tomorrow.toISOString().split('T')[0];
+            
+            // Show notification
+            showNotification(`Flight booking request sent for ${fromLocation} to ${toLocation}`);
+        });
+        
+        // Floating WhatsApp button
+        floatingWhatsApp.addEventListener('click', function() {
+            const encodedMessage = encodeURIComponent(defaultMessage);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            showNotification("Opening WhatsApp chat");
+        });
+        
+        // Footer WhatsApp button
+        footerWhatsApp.addEventListener('click', function(e) {
+            e.preventDefault();
+            const encodedMessage = encodeURIComponent(defaultMessage);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            showNotification("Opening WhatsApp chat");
+        });
+        
+        // FAQ Functionality
+        const faqCategoryBtns = document.querySelectorAll('.faq-category-btn');
+        const faqContents = document.querySelectorAll('.faq-content');
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        // FAQ Category Switching
+        faqCategoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Update active button
+                faqCategoryBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Update active content
+                faqContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${category}-faq`).classList.add('active');
+                
+                // Close all FAQ items when switching categories
+                faqItems.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open first FAQ item in new category
+                const firstFaqItem = document.querySelector(`#${category}-faq .faq-item:first-child`);
+                if (firstFaqItem) {
+                    firstFaqItem.classList.add('active');
+                }
+            });
+        });
+        
+        // FAQ Item Toggle
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', function() {
+                const isActive = item.classList.contains('active');
+                
+                // Close all items in same category
+                const category = item.closest('.faq-content').id;
+                const allItemsInCategory = document.querySelectorAll(`#${category} .faq-item`);
+                allItemsInCategory.forEach(faqItem => {
+                    faqItem.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Show notification function
+        function showNotification(text) {
+            notificationText.textContent = text;
+            notification.style.display = 'flex';
+            
+            // Auto hide after 4 seconds
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 4000);
+        }
+        
+        // Set minimum date to today for travel date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('travelDate');
+            dateInput.min = today;
+            
+            // Set default date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            dateInput.value = tomorrow.toISOString().split('T')[0];
+            
+            // Close notification on click
+            notification.addEventListener('click', function() {
+                notification.style.display = 'none';
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && flightModal.style.display === 'flex') {
+                    flightModal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Initialize first FAQ item as open
+            const firstFaqItem = document.querySelector('.faq-item');
+            if (firstFaqItem) {
+                firstFaqItem.classList.add('active');
+            }
+        });
+         const airports = [
+            // Nepal airports
+            { name: "Tribhuvan International Airport", city: "Kathmandu", country: "Nepal", code: "KTM" },
+            { name: "Pokhara International Airport", city: "Pokhara", country: "Nepal", code: "PKR" },
+            { name: "Gautam Buddha International Airport", city: "Bhairahawa", country: "Nepal", code: "BWA" },
+            
+            // Middle East (Common for Nepali employment)
+            { name: "Hamad International Airport", city: "Doha", country: "Qatar", code: "DOH" },
+            { name: "Dubai International Airport", city: "Dubai", country: "UAE", code: "DXB" },
+            { name: "Abu Dhabi International Airport", city: "Abu Dhabi", country: "UAE", code: "AUH" },
+            { name: "King Fahd International Airport", city: "Dammam", country: "Saudi Arabia", code: "DMM" },
+            { name: "King Abdulaziz International Airport", city: "Jeddah", country: "Saudi Arabia", code: "JED" },
+            { name: "King Khalid International Airport", city: "Riyadh", country: "Saudi Arabia", code: "RUH" },
+            { name: "Kuwait International Airport", city: "Kuwait City", country: "Kuwait", code: "KWI" },
+            { name: "Bahrain International Airport", city: "Manama", country: "Bahrain", code: "BAH" },
+            { name: "Muscat International Airport", city: "Muscat", country: "Oman", code: "MCT" },
+            
+            // Asia
+            { name: "Indira Gandhi International Airport", city: "Delhi", country: "India", code: "DEL" },
+            { name: "Chhatrapati Shivaji Maharaj International Airport", city: "Mumbai", country: "India", code: "BOM" },
+            { name: "Kuala Lumpur International Airport", city: "Kuala Lumpur", country: "Malaysia", code: "KUL" },
+            { name: "Singapore Changi Airport", city: "Singapore", country: "Singapore", code: "SIN" },
+            { name: "Suvarnabhumi Airport", city: "Bangkok", country: "Thailand", code: "BKK" },
+            { name: "Hong Kong International Airport", city: "Hong Kong", country: "China", code: "HKG" },
+            { name: "Incheon International Airport", city: "Seoul", country: "South Korea", code: "ICN" },
+            { name: "Tokyo Narita International Airport", city: "Tokyo", country: "Japan", code: "NRT" },
+            { name: "Beijing Capital International Airport", city: "Beijing", country: "China", code: "PEK" },
+            { name: "Shanghai Pudong International Airport", city: "Shanghai", country: "China", code: "PVG" },
+            
+            // Europe
+            { name: "Heathrow Airport", city: "London", country: "UK", code: "LHR" },
+            { name: "Charles de Gaulle Airport", city: "Paris", country: "France", code: "CDG" },
+            { name: "Frankfurt Airport", city: "Frankfurt", country: "Germany", code: "FRA" },
+            { name: "Amsterdam Airport Schiphol", city: "Amsterdam", country: "Netherlands", code: "AMS" },
+            { name: "Istanbul Airport", city: "Istanbul", country: "Turkey", code: "IST" },
+            
+            // North America
+            { name: "John F. Kennedy International Airport", city: "New York", country: "USA", code: "JFK" },
+            { name: "Los Angeles International Airport", city: "Los Angeles", country: "USA", code: "LAX" },
+            { name: "Toronto Pearson International Airport", city: "Toronto", country: "Canada", code: "YYZ" },
+            { name: "Vancouver International Airport", city: "Vancouver", country: "Canada", code: "YVR" },
+            
+            // Australia
+            { name: "Sydney Kingsford Smith Airport", city: "Sydney", country: "Australia", code: "SYD" },
+            { name: "Melbourne Airport", city: "Melbourne", country: "Australia", code: "MEL" },
+            
+            // Other popular destinations
+            { name: "Soekarno-Hatta International Airport", city: "Jakarta", country: "Indonesia", code: "CGK" },
+            { name: "Ninoy Aquino International Airport", city: "Manila", country: "Philippines", code: "MNL" },
+            { name: "Colombo Bandaranaike International Airport", city: "Colombo", country: "Sri Lanka", code: "CMB" },
+            { name: "Dhaka Hazrat Shahjalal International Airport", city: "Dhaka", country: "Bangladesh", code: "DAC" }
+        ];
+
+        // Elements
+        const fromInput = document.getElementById('fromLocation');
+        const toInput = document.getElementById('toLocation');
+        const fromDropdown = document.getElementById('fromDropdown');
+        const toDropdown = document.getElementById('toDropdown');
+        
+        // Function to search airports
+        function searchAirports(query, type) {
+            if (!query || query.trim().length < 2) {
+                return [];
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            const results = [];
+            
+            for (const airport of airports) {
+                // Search in city, country, airport name, and code
+                const searchString = `
+                    ${airport.city.toLowerCase()} 
+                    ${airport.country.toLowerCase()} 
+                    ${airport.name.toLowerCase()} 
+                    ${airport.code.toLowerCase()}
+                `;
+                
+                if (searchString.includes(searchTerm)) {
+                    results.push(airport);
+                }
+            }
+            
+            // Sort by relevance (exact matches first)
+            return results.sort((a, b) => {
+                const aCityMatch = a.city.toLowerCase().includes(searchTerm);
+                const bCityMatch = b.city.toLowerCase().includes(searchTerm);
+                const aCountryMatch = a.country.toLowerCase().includes(searchTerm);
+                const bCountryMatch = b.country.toLowerCase().includes(searchTerm);
+                const aNameMatch = a.name.toLowerCase().includes(searchTerm);
+                const bNameMatch = b.name.toLowerCase().includes(searchTerm);
+                
+                if (aCityMatch && !bCityMatch) return -1;
+                if (!aCityMatch && bCityMatch) return 1;
+                if (aCountryMatch && !bCountryMatch) return -1;
+                if (!aCountryMatch && bCountryMatch) return 1;
+                if (aNameMatch && !bNameMatch) return -1;
+                if (!aNameMatch && bNameMatch) return 1;
+                
+                return 0;
+            });
+        }
+        
+        // Function to render dropdown
+        function renderDropdown(results, dropdown, input, type) {
+            dropdown.innerHTML = '';
+            
+            if (results.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'No results found';
+                dropdown.appendChild(noResults);
+            } else {
+                results.forEach(airport => {
+                    const item = document.createElement('div');
+                    item.className = 'autocomplete-item';
+                    item.innerHTML = `
+                        <div class="airport-name">
+                            ${airport.city}, ${airport.country}
+                            <span style="color: var(--primary); font-size: 0.85rem; margin-left: 5px;">
+                                (${airport.code})
+                            </span>
+                        </div>
+                        <div class="airport-location">
+                            <i class="fas fa-plane"></i>
+                            ${airport.name}
+                        </div>
+                    `;
+                    
+                    item.addEventListener('click', () => {
+                        input.value = `${airport.city}, ${airport.country}`;
+                        dropdown.style.display = 'none';
+                    });
+                    
+                    dropdown.appendChild(item);
+                });
+            }
+            
+            dropdown.style.display = results.length > 0 ? 'block' : 'none';
+        }
+        
+        // Add event listeners for search
+        fromInput.addEventListener('input', () => {
+            const results = searchAirports(fromInput.value, 'from');
+            renderDropdown(results, fromDropdown, fromInput, 'from');
+        });
+        
+        toInput.addEventListener('input', () => {
+            const results = searchAirports(toInput.value, 'to');
+            renderDropdown(results, toDropdown, toInput, 'to');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!fromInput.contains(e.target) && !fromDropdown.contains(e.target)) {
+                fromDropdown.style.display = 'none';
+            }
+            if (!toInput.contains(e.target) && !toDropdown.contains(e.target)) {
+                toDropdown.style.display = 'none';
+            }
+        });
+        
+        // Show dropdown on focus
+        fromInput.addEventListener('focus', () => {
+            if (fromInput.value.length >= 2) {
+                const results = searchAirports(fromInput.value, 'from');
+                renderDropdown(results, fromDropdown, fromInput, 'from');
+            }
+        });
+        
+        toInput.addEventListener('focus', () => {
+            if (toInput.value.length >= 2) {
+                const results = searchAirports(toInput.value, 'to');
+                renderDropdown(results, toDropdown, toInput, 'to');
+            }
+        });
+                
+        // Only adding the new airport search functionality above
+    </script>
+</body>
+</html>
