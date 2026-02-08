@@ -248,42 +248,7 @@
             color: var(--secondary);
             font-weight: 600;
         }
-        
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(16, 185, 129, 0.1));
-            padding: 12px 20px;
-            border-radius: 50px;
-            border: 2px solid rgba(245, 158, 11, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-        }
-        
-        .trust-badge i {
-            color: var(--accent);
-            font-size: 1.5rem;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .trust-badge span {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 0.9rem;
-        }
-        
-        .trust-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
-        }
-        
-        .trust-badge:hover i {
-            transform: scale(1.2) rotate(10deg);
-        }
-        
+
         /* Hero Section */
         .hero {
             padding: 5rem 0 3rem;
@@ -359,11 +324,6 @@
         background: none;
         color: #09376a;
     }
-
-    .trust-badge {
-        display: none;
-    }
-    
 }
 
         /* Services Grid - Responsive */
@@ -1168,11 +1128,6 @@
                 flex-direction: column;
                 text-align: center;
             }
-            
-            .trust-badge {
-                margin-top: 10px;
-            }
-            
             .hero h2 {
                 font-size: 2.5rem;
             }
@@ -2279,6 +2234,276 @@
             .country-name { font-size: 1rem; }
         }
 
+        /* Calculator */
+        /* Widget Container */
+        .widget-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Floating Button */
+        .floating-btn {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Calculator Popup */
+        .calculator-popup {
+            position: relative;
+            bottom: 70px;
+            right: 0;
+            width: 320px;
+            background: #FFF5EE;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: none;
+            overflow: hidden;
+        }
+
+        .calculator-popup.show {
+            display: block;
+            animation: popupShow 0.3s ease;
+        }
+
+        @keyframes popupShow {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Popup Header */
+        .popup-header {
+            background: #1a1a2e;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .popup-header h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+            color: #e6e6fa;
+
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            background: #f8f9fa;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px;
+            background: #FFF4E6;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: #5A3921;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .tab.active {
+            color: #7B3F00;
+            background: #F5D6C6;
+            border-bottom: 3px solid #D4A76A;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            padding: 25px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Input Styles */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        /* Calculate Button */
+        .calc-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #059669 0%, #10B981 100%);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .calc-btn:hover {
+            background: linear-gradient(135deg, #047857 0%, #0DA271 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.2);
+        }
+
+        /* Results */
+        .results {
+            background: #FEFCE8;
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+            border: 1px solid #C4B5FD;
+        }
+
+        .results.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .result-title {
+            font-size: 35px;
+            font-weight: 700;
+            color: #854D0E;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, #FBBF24 30%, transparent 70%) 1;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .result-amount {
+            font-size: 30px;
+            font-weight: 800;
+            margin: 15px 0;
+            text-align: center; 
+            color: #CA8A04;
+            text-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+            border: 1px solid #86EFAC;
+        }
+
+        .result-details {
+            background: white;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #713F12;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        /* Close button */
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .widget-container {
+                top: 15px;
+                right: 15px;
+            }
+            
+            .calculator-popup {
+                width: 300px;
+                right: -10px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .widget-container {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .calculator-popup {
+                width: 280px;
+                right: -15px;
+            }
+            
+            .floating-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2328,13 +2553,76 @@
                             <p><i class="fas fa-mountain"></i> <span class="nepali">अन्नपूर्ण सेवा</span> | Professional Business Services</p>
                         </div>
                     </div>
-                    <div class="trust-badge" id="trustBadge" role="button" tabindex="0" aria-label="Trusted Service">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Trusted Service & Reliable Support</span>
-                    </div>
                 </div>
             </div>
         </header>
+
+        <!-- Calculator Widget -->
+         <!-- Shram Swikirti Widget -->
+    <div class="widget-container">
+        <!-- Floating Button -->
+        <button class="floating-btn" onclick="toggleCalculator()">
+            <i class="fas fa-calculator"></i> 
+        </button>
+
+        <!-- Calculator Popup -->
+        <div class="calculator-popup" id="calculatorPopup">
+            <div class="popup-header">
+                <button class="close-popup" onclick="closeCalculator()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h3>श्रम स्वीकृति कैलकुलेटर</h3>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('ageTab')">उमेर बाट (With Age)</button>
+                <button class="tab" onclick="switchTab('dateTab')">जन्ममिति बाट (With Birthdate)</button>
+            </div>
+
+            <!-- Age Tab -->
+            <div class="tab-content active" id="ageTab">
+                <div class="input-group">
+                    <label for="ageInput">उमेर (Age in years):</label>
+                    <input type="number" id="ageInput" min="1" max="120" placeholder="Enter age" value="35">
+                </div>
+                <button class="calc-btn" onclick="calculateFromAge()">
+                    <i class="fas fa-calculator"></i> Calculate Fee
+                </button>
+            </div>
+
+            <!-- Birth Date Tab -->
+            <div class="tab-content" id="dateTab">
+                <div class="input-group">
+                    <label for="dateInput">जन्म मिति (Birth Date):</label>
+                    <input type="date" id="dateInput">
+                </div>
+                <button class="calc-btn" onclick="calculateFromDate()">
+                    <i class="fas fa-calculator"></i> Calculate Fee
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results" id="results">
+                <div class="result-title">श्रम स्वीकृति शुल्क</div>
+                <div class="result-amount" id="feeAmount">रु 5,208</div>
+                <div class="result-details">
+                    <div class="detail-row">
+                        <span>उमेर (Age):</span>
+                        <span id="detailAge">35 वर्ष</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>समूह (Group):</span>
+                        <span id="detailGroup">≤ 35 वर्ष</span>
+                    </div>
+                    <div class="detail-row">
+                        <span>शुल्क (Fee):</span>
+                        <span id="detailFee">₹5,208</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         
         <!-- Flags motion -->
      <div class="marquee-container">
@@ -3767,6 +4055,136 @@ const countries = [
             }
             
             console.log('Marquee initialized successfully!');
+        });
+
+// ========== Calculator ==========
+        const today = new Date();
+        const defaultDate = new Date(today.getFullYear() - 35, today.getMonth(), today.getDate());
+        const formattedDate = defaultDate.toISOString().split('T')[0];
+        document.getElementById('dateInput').value = formattedDate;
+        document.getElementById('dateInput').max = today.toISOString().split('T')[0];
+
+        // Fee structure
+        const fees = {
+            upTo35: 5208,
+            thirtySixToFifty: 6431,
+            aboveFifty: 10963
+        };
+
+        // Toggle calculator popup
+        function toggleCalculator() {
+            const popup = document.getElementById('calculatorPopup');
+            popup.classList.toggle('show');
+        }
+
+        // Close calculator
+        function closeCalculator() {
+            document.getElementById('calculatorPopup').classList.remove('show');
+        }
+
+        // Switch between tabs
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activate clicked tab button
+            event.target.classList.add('active');
+            
+            // Show results if already calculated
+            const results = document.getElementById('results');
+            if (results.classList.contains('show')) {
+                results.classList.remove('show');
+            }
+        }
+
+        // Calculate from age input
+        function calculateFromAge() {
+            const ageInput = document.getElementById('ageInput');
+            const age = parseInt(ageInput.value);
+            
+            if (!age || age < 1 || age > 120) {
+                alert('कृपया १ देखि १२० वर्षको बीचमा उमेर प्रविष्ट गर्नुहोस्।');
+                ageInput.focus();
+                return;
+            }
+            
+            calculateFee(age);
+        }
+
+        // Calculate from birth date
+        function calculateFromDate() {
+            const dateInput = document.getElementById('dateInput').value;
+            if (!dateInput) {
+                alert('कृपया जन्म मिति चयन गर्नुहोस्।');
+                return;
+            }
+            
+            const birthDate = new Date(dateInput);
+            const today = new Date();
+            
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            
+            // Update age input for consistency
+            document.getElementById('ageInput').value = age;
+            
+            calculateFee(age);
+        }
+
+        // Calculate fee based on age
+        function calculateFee(age) {
+            let fee, group, groupNepali;
+            
+            if (age <= 35) {
+                fee = fees.upTo35;
+                group = "≤ 35 years";
+                groupNepali = "३५ वर्षसम्म";
+            } else if (age >= 36 && age <= 50) {
+                fee = fees.thirtySixToFifty;
+                group = "36-50 years";
+                groupNepali = "३६ देखि ५० वर्षसम्म";
+            } else {
+                fee = fees.aboveFifty;
+                group = "51+ years";
+                groupNepali = "५१ वर्षदेखि माथि";
+            }
+            
+            // Update results
+            document.getElementById('feeAmount').textContent = `रु ${fee.toLocaleString('en-IN')}`;
+            document.getElementById('detailAge').textContent = `${age} वर्ष`;
+            document.getElementById('detailGroup').textContent = groupNepali;
+            document.getElementById('detailFee').textContent = `रु ${fee.toLocaleString('en-IN')}`;
+            
+            // Show results
+            document.getElementById('results').classList.add('show');
+            
+            // Scroll results into view
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('calculatorPopup');
+            const button = document.querySelector('.floating-btn');
+            
+            if (popup.classList.contains('show') && 
+                !popup.contains(event.target) && 
+                !button.contains(event.target)) {
+                popup.classList.remove('show');
+            }
         });
 
 // ========== WELCOME ANIMATION CLEANUP ==========
