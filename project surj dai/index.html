@@ -2235,36 +2235,69 @@
         }
 
         /* Calculator */
-        /* Widget Container */
         .widget-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
 
-        /* Floating Button */
-        .floating-btn {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-        }
+.floating-btn {
+    height: 4rem;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+    gap: 0;
+    padding: 0;
+    width: auto;
+    padding: 0 1rem;
+    border-radius: 2rem;
+    justify-content: space-between;
+}
 
-        .floating-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 18px rgba(52, 152, 219, 0.4);
-        }
+.btn-text {
+        display: inline;
+        font-size: 0.875rem;
+        margin-left: 0.5rem;
+        color: #f0f8ff;
+    }
 
+@media (min-width: 768px) {
+    .floating-btn {
+        width: auto;
+        min-width: 12rem;
+        height: 4.5rem;
+        border-radius: 2.25rem;
+        padding: 0 1.5rem;
+        gap: 0.625rem;
+        font-size: 1.75rem;
+    }
+    
+    .btn-text {
+        display: inline;
+        font-size: 1.125rem;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 1024px) {
+    .floating-btn {
+        min-width: 14rem;
+        height: 5rem;
+        font-size: 2rem;
+    }
+    
+    .btn-text {
+        font-size: 1.25rem;
+        color: #ecf9ff;
+    }
+}
         /* Calculator Popup */
         .calculator-popup {
             position: relative;
@@ -2430,28 +2463,7 @@
             text-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
             border: 1px solid #86EFAC;
         }
-
-        .result-details {
-            background: white;
-            border-radius: 8px;
-            font-size: 20px;
-            font-weight: 800;
-            color: #713F12;
-            padding: 15px;
-            margin-top: 15px;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .detail-row:last-child {
-            border-bottom: none;
-        }
-
+        
         /* Close button */
         .close-popup {
             position: absolute;
@@ -2558,12 +2570,13 @@
         </header>
 
         <!-- Calculator Widget -->
-         <!-- Shram Swikirti Widget -->
     <div class="widget-container">
         <!-- Floating Button -->
         <button class="floating-btn" onclick="toggleCalculator()">
             <i class="fas fa-calculator"></i> 
+            <span class="btn-text">Calculator</span>
         </button>
+        
 
         <!-- Calculator Popup -->
         <div class="calculator-popup" id="calculatorPopup">
@@ -2604,22 +2617,10 @@
 
             <!-- Results Section -->
             <div class="results" id="results">
-                <div class="result-title">श्रम स्वीकृति शुल्क</div>
-                <div class="result-amount" id="feeAmount">रु 5,208</div>
-                <div class="result-details">
-                    <div class="detail-row">
-                        <span>उमेर (Age):</span>
-                        <span id="detailAge">35 वर्ष</span>
-                    </div>
-                    <div class="detail-row">
-                        <span>समूह (Group):</span>
-                        <span id="detailGroup">≤ 35 वर्ष</span>
-                    </div>
-                    <div class="detail-row">
-                        <span>शुल्क (Fee):</span>
-                        <span id="detailFee">₹5,208</span>
-                    </div>
-                </div>
+                <div class="result-title">पुरानो कम्पनी भएको भए</div>
+                <div class="result-amount" id="feeAmount">रु 8,284</div>
+                <div class="result-title">कम्पनी परिवर्तन भएको भए</div>
+                <div class="result-amount" id="feeAmountChange">रु 8,434</div>
             </div>
         </div>
     </div>
@@ -4066,9 +4067,13 @@ const countries = [
 
         // Fee structure
         const fees = {
-            upTo35: 5208,
-            thirtySixToFifty: 6431,
-            aboveFifty: 10963
+            upTo35: 8284,
+            above35: 9507
+        };
+
+        const feesChange = {
+            upTo35: 9507,
+            above35: 9657
         };
 
         // Toggle calculator popup
@@ -4112,8 +4117,8 @@ const countries = [
             const ageInput = document.getElementById('ageInput');
             const age = parseInt(ageInput.value);
             
-            if (!age || age < 1 || age > 120) {
-                alert('कृपया १ देखि १२० वर्षको बीचमा उमेर प्रविष्ट गर्नुहोस्।');
+            if (!age || age < 16 || age > 70) {
+                alert('कृपया १६ देखि ७० वर्षको बीचमा उमेर प्रविष्ट गर्नुहोस्।');
                 ageInput.focus();
                 return;
             }
@@ -4147,27 +4152,20 @@ const countries = [
 
         // Calculate fee based on age
         function calculateFee(age) {
-            let fee, group, groupNepali;
+            let fee, group, groupNepali, feeChange;
             
             if (age <= 35) {
                 fee = fees.upTo35;
-                group = "≤ 35 years";
-                groupNepali = "३५ वर्षसम्म";
-            } else if (age >= 36 && age <= 50) {
-                fee = fees.thirtySixToFifty;
-                group = "36-50 years";
-                groupNepali = "३६ देखि ५० वर्षसम्म";
-            } else {
-                fee = fees.aboveFifty;
-                group = "51+ years";
-                groupNepali = "५१ वर्षदेखि माथि";
+                feeChange = feesChange.upTo35;
+                
+            }  else {
+                fee = fees.above35;
+                feeChange = feesChange.above35;
             }
             
             // Update results
             document.getElementById('feeAmount').textContent = `रु ${fee.toLocaleString('en-IN')}`;
-            document.getElementById('detailAge').textContent = `${age} वर्ष`;
-            document.getElementById('detailGroup').textContent = groupNepali;
-            document.getElementById('detailFee').textContent = `रु ${fee.toLocaleString('en-IN')}`;
+            document.getElementById('feeAmountChange').textContent = `रु ${feeChange.toLocaleString('en-IN')}`;
             
             // Show results
             document.getElementById('results').classList.add('show');
