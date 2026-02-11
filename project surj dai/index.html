@@ -2516,13 +2516,17 @@
         }
 
         .service-question {
-            font-size: 4 rem;
+            font-size: clamp(1rem, 2vw, 1.5rem);
             color: var(--secondary);
             font-weight: 700;
-            color: #00A86B;
+            color: #00853E;
             margin-bottom: 1.5rem;
             font-family: 'Noto Sans Devanagari';
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hint{
+            color: #2C3E50;
         }
 
     </style>
@@ -2567,7 +2571,7 @@
                 <div class="header-content">
                     <div class="logo">
                         <div class="logo-image">
-                            <img src="safld.png" alt="Annapurna Sewa Logo" width="60" height="60">
+                            <img src="aspl.jpg" alt="Annapurna Sewa Logo" width="60" height="60">
                         </div>
                         <div class="logo-text">
                             <h1>Annapurna Sewa</h1>
@@ -2645,6 +2649,7 @@
                 <h1 class="animate-on-scroll">वैदेशिक रोजगार एपसँग आबद्ध संस्था</h1>
                 <h2 class="animate-on-scroll">Your Trusted Partner for Professional Services</h2>
                 <p class="animate-on-scroll" style="transition-delay: 0.2s">Get expert assistance with <span class="highlight">Work Permit Renewal Assistance</span> and <span class="highlight">Flight Ticket Booking</span>. आवश्यकता अनुसार छिटो, भरपर्दो र उत्कृष्ट सेवा न्यूनतम सेवा शुल्कमा</p>
+                <p class="animate-on-scroll" style="transition-delay: 0.4s">तपाईंको श्रम नवीकरण गर्ने समय भएको छ? सस्तो टिकट खोज्दै हुनुहुन्छ? हामी तपाईंलाई सहयोग गर्न यहाँ छौं।</p>
             </div>
         </section>
 
@@ -2671,7 +2676,8 @@
                             </ul>
                         </div>
                         <div class="service-question">
-                            तपाईंको श्रम नवीकरण गर्ने समय भएको छ। तलको बटनमा क्लिक गर्नुहोस्।
+                            तपाईंको श्रम नवीकरण गर्ने समय भएको छ? <br>
+                            <div class="hint"> तलको बटनमा क्लिक गर्नुहोस् : </div>
                         </div>
                         <button class="btn primary-btn" id="workPermitBtn" type="button">
                             <i class="fab fa-whatsapp"></i>
@@ -2697,7 +2703,8 @@
                             </ul>
                         </div>
                         <div class="service-question">
-                            तपाईं सस्तो टिकट खोज्दै हुनुहुन्छ? तलको बटन क्लिक गरि आफूलाई चाहिएको फ्लाइट चयन गर्नुहोस्।
+                            तपाईं सस्तो टिकट खोज्दै हुनुहुन्छ? <br>
+                            <div class="hint"> तलको बटन क्लिक गरि आफूलाई चाहिएको फ्लाइट चयन गर्नुहोस् : </div>
                         </div>
                         <button class="btn secondary-btn" id="flightTicketBtn" type="button">
                             <i class="fas fa-search"></i>
