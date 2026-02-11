@@ -2516,6 +2516,16 @@
             }
         }
 
+        .service-question {
+            font-size: 4 rem;
+            color: var(--secondary);
+            font-weight: 700;
+            color: #00A86B;
+            margin-bottom: 1.5rem;
+            font-family: 'Noto Sans Devanagari';
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
     </style>
 </head>
 <body>
@@ -2536,7 +2546,7 @@
             
             <div class="welcome-text">
                 <div class="welcome-logo">
-                    <img src="safld.png" alt="Annapurna Sewa Logo" width="100" height="100">
+                    <img src="aspl.jpg" alt="Annapurna Sewa Logo" width="100" height="100">
                 </div>
                 <h1>Welcome to Annapurna Sewa</h1>
                 <p>Your Trusted Partner for Professional Services</p>
@@ -2656,10 +2666,13 @@
                         </div>
                         <div class="service-features">
                             <ul class="feature-list">
-                                <li><i class="fas fa-check-circle"></i> <span class="nepali">न्यूनतम सेवा </span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="nepali">न्यूनतम सेवा शुल्क </span></li>
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">छिटो, सजिलो, भरपर्दो</span></li>
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">सजिलो प्रोसेस, फास्ट रिजल्ट</span></li>
                             </ul>
+                        </div>
+                        <div class="service-question">
+                            तपाईंको श्रम नवीकरण गर्ने समय भएको छ। तलको बटनमा क्लिक गर्नुहोस्।
                         </div>
                         <button class="btn primary-btn" id="workPermitBtn" type="button">
                             <i class="fab fa-whatsapp"></i>
@@ -2683,6 +2696,9 @@
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">विश्वसनीय अनुभव</span></li>
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">सस्तो टिकट, खुशी यात्रा</span></li>
                             </ul>
+                        </div>
+                        <div class="service-question">
+                            तपाईं सस्तो टिकट खोज्दै हुनुहुन्छ? तलको बटन क्लिक गरि आफूलाई चाहिएको फ्लाइट चयन गर्नुहोस्।
                         </div>
                         <button class="btn secondary-btn" id="flightTicketBtn" type="button">
                             <i class="fas fa-search"></i>
@@ -2742,6 +2758,71 @@
                     </button>
                 </div>
                 
+                <!-- Work Permit FAQ -->
+                <div class="faq-content" id="permit-faq">
+                    <div class="faq-item" data-delay="0.1">
+                        <div class="faq-question">
+                            वर्क पर्मिट नवीकरण कसरि गर्ने?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">अनलाइन फर्म भर्नुहोस् → आवश्यक कागजात अपलोड गर्नुहोस् → शुल्क भुक्तानी गर्नुहोस् → प्रगति ट्र्याक गर्नुहोस्।</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-delay="0.2">
+                        <div class="faq-question">
+                            कति समयमा नवीकरण हुन्छ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">सामान्यतया 7–15 कार्य दिनमा पूरा हुन्छ।</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-delay="0.3">
+                        <div class="faq-question">
+                            कुन कागजातहरू चाहिन्छ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">पासपोर्ट/पहिचान प्रमाण, पुरानो वर्क पर्मिट, हालको रोजगार प्रमाणपत्र।</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-delay="0.4">
+                        <div class="faq-question">
+                            फेस-टू-फेस जानुपर्छ कि?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">हाम्रो अनलाइन सेवा पूर्ण डिजिटल छ। केही विशेष अवस्थामा मात्र कार्यालय जानुपर्ने हुन सक्छ।</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-delay="0.5">
+                        <div class="faq-question">
+                            फीस कति हुन्छ?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">न्यूनतम खर्चमै सेवा उपलब्ध छ। शुल्क तपाईंको आवेदन अनुसार फरक पर्न सक्छ।</span></p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-delay="0.6">
+                        <div class="faq-question">
+                            नवीकरण स्टाटस कसरी ट्र्याक गर्ने?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p><span class="nepali">तपाईं नेपाल सरकारको वैदेशिक रोजगार विभागको आधिकारिक वेबसाइट मा गएर “अन्तिम श्रम स्वीकृति खोजी” भन्ने सेक्सनमा
+✨ आफ्नो पासपोर्ट नम्बर राखेर
+🔍 तुरुन्तै हेर्न सक्नुहुन्छ कि श्रम स्वीकृति भएको छ कि छैन।</span></p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Flight Ticket FAQ -->
                 <div class="faq-content active" id="flight-faq">
                     <div class="faq-item" data-delay="0.1">
@@ -2805,68 +2886,7 @@
                     </div>
                 </div>
                 
-                <!-- Work Permit FAQ -->
-                <div class="faq-content" id="permit-faq">
-                    <div class="faq-item" data-delay="0.1">
-                        <div class="faq-question">
-                            वर्क पर्मिट नवीकरण कसरि गर्ने?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">अनलाइन फर्म भर्नुहोस् → आवश्यक कागजात अपलोड गर्नुहोस् → शुल्क भुक्तानी गर्नुहोस् → प्रगति ट्र्याक गर्नुहोस्।</span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" data-delay="0.2">
-                        <div class="faq-question">
-                            कति समयमा नवीकरण हुन्छ?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">सामान्यतया 7–15 कार्य दिनमा पूरा हुन्छ।</span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" data-delay="0.3">
-                        <div class="faq-question">
-                            कुन कागजातहरू चाहिन्छ?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">पासपोर्ट/पहिचान प्रमाण, पुरानो वर्क पर्मिट, हालको रोजगार प्रमाणपत्र।</span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" data-delay="0.4">
-                        <div class="faq-question">
-                            फेस-टू-फेस जानुपर्छ कि?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">हाम्रो अनलाइन सेवा पूर्ण डिजिटल छ। केही विशेष अवस्थामा मात्र कार्यालय जानुपर्ने हुन सक्छ।</span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" data-delay="0.5">
-                        <div class="faq-question">
-                            फीस कति हुन्छ?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">न्यूनतम खर्चमै सेवा उपलब्ध छ। शुल्क तपाईंको आवेदन अनुसार फरक पर्न सक्छ।</span></p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" data-delay="0.6">
-                        <div class="faq-question">
-                            नवीकरण स्टाटस कसरी ट्र्याक गर्ने?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">तपाईंको आवेदन नम्बर/ईमेल प्रयोग गरेर हाम्रो वेबसाइटमा "Track Application" बाट हेर्न सक्नुहुन्छ।</span></p>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </section>
         
