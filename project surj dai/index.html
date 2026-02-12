@@ -2672,17 +2672,18 @@
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">छिटो, सजिलो, भरपर्दो</span></li>
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">सजिलो प्रोसेस, फास्ट रिजल्ट</span></li>
                             </ul>
-                        <div class="faq-item" data-delay="0.4">
+                            
+¥                       <div class="faq-item">
                         <div class="faq-question">
-                            अबश्यक कागजात के के हुन त??
+                            अबश्यक कागजात के के हुन त ?
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
                             <p><span class="nepali">आवश्यक कागजातहरू:
-✅ पासपोर्ट <br>
-✅ भिसा / भिसा कार्ड <br>
-✅ आगमन (Arrival) र प्रस्थान (Departure) स्ट्याम्प <br>
-✅ कम्पनी नाम परिवर्तन भएको भए नयाँ एग्रिमेन्ट पेपर अनिवार्य <br> </span></p>
+                                ✅ पासपोर्ट <br>
+                                ✅ भिसा / भिसा कार्ड <br>
+                                ✅ आगमन (Arrival) र प्रस्थान (Departure) स्ट्याम्प <br>
+                                ✅ कम्पनी नाम परिवर्तन भएको भए नयाँ एग्रिमेन्ट पेपर अनिवार्य <br> </span></p>
                         </div>
                     </div>
 
@@ -2740,7 +2741,7 @@
             <div class="icon-container">
                 <i class="fas fa-users project-icon"></i>
             </div>
-            <div class="stat-number">100,000+</div>
+            <div class="stat-number">100000+</div>
             <div class="stat-label">People Visited</div>
         </div>
         <div class="stat-item">
@@ -3046,6 +3047,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ButtonHandlers.init();
         FlyingPlanes.init();
         WelcomeAnimation.init();
+        SmallFaq.init();
         
         console.log('Annapurna Sewa initialized successfully');
     } catch (error) {
@@ -3701,7 +3703,30 @@ const FlightForm = {
         }
     }
 };
-            
+          
+//====== Small FAQ ======
+
+const SmallFaq = {
+    init: function() {
+        const smallfaqi = document.querySelectorAll('.faq-item');
+smallfaqi.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+                    if(!isActive) {
+                        item.classList.add('active');
+                    }
+                    else {
+                           item.classlist.remove('active'); 
+                        }
+            });
+            }
+        });
+    }
+};
+
+
 // ========== FAQ SYSTEM ==========
 const FAQSystem = {
     init: function() {
