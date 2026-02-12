@@ -3717,9 +3717,6 @@ smallfaqi.forEach(item => {
                     if(!isActive) {
                         item.classList.add('active');
                     }
-                    else {
-                           item.classlist.remove('active'); 
-                        }
             });
             }
         });
@@ -4240,7 +4237,6 @@ const countries = [
         document.addEventListener('click', function(event) {
             const popup = document.getElementById('calculatorPopup');
             const button = document.querySelector('.floating-btn');
-            
             if (popup.classList.contains('show') && 
                 !popup.contains(event.target) && 
                 !button.contains(event.target)) {
