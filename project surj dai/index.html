@@ -3708,17 +3708,22 @@ const FlightForm = {
 
 const SmallFaq = {
     init: function() {
-        const smallfaqi = document.querySelectorAll('.faq-item');
-smallfaqi.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            if (question) {
-                question.addEventListener('click', function() {
-                    const isActive = item.classList.contains('active');
-                    if(!isActive) {
-                        item.classList.add('active');
-                    }
-            });
-            }
+        const faqItem = document.querySelector('.faq-item');
+        if (!faqItem) return;
+        
+        const question = faqItem.querySelector('.faq-question');
+        
+        question.addEventListener('click', function(e) {
+            e.stopPropagation();
+            faqItem.classList.add('active');
+        });
+        
+        document.addEventListener('click', function() {
+            faqItem.classList.remove('active');
+        });
+        
+        window.addEventListener('scroll', function() {
+            faqItem.classList.remove('active');
         });
     }
 };
