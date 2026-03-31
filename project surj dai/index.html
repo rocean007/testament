@@ -461,6 +461,38 @@
             padding: 1rem 1.15rem;
             display: grid;
             gap: 0.7rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+        }
+
+        .notice-card.is-compact {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(94vw, 560px);
+            z-index: 1100;
+            border-left-width: 1px;
+            border-color: rgba(251, 191, 36, 0.45);
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
+            backdrop-filter: blur(14px);
+            gap: 0;
+            padding: 0.5rem 0.6rem;
+        }
+
+        .notice-card.is-compact .notice-title,
+        .notice-card.is-compact .notice-title-main,
+        .notice-card.is-compact .notice-title-main .nepali,
+        .notice-card.is-compact .notice-title-main i {
+            color: #F8FAFC;
+        }
+
+        .notice-card.is-compact .notice-badge {
+            display: none;
+        }
+
+        .notice-card.is-collapsed .notice-details {
+            display: none;
         }
 
         .notice-title {
@@ -480,6 +512,12 @@
             gap: 8px;
         }
 
+        .notice-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .notice-badge {
             background: rgba(245, 158, 11, 0.13);
             color: #92400E;
@@ -489,6 +527,32 @@
             font-size: 0.75rem;
             font-weight: 700;
             line-height: 1;
+        }
+
+        .notice-toggle {
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            background: rgba(255, 255, 255, 0.7);
+            color: #854D0E;
+            border-radius: 999px;
+            padding: 0.3rem 0.65rem;
+            font-size: 0.74rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .notice-card.is-compact .notice-toggle {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            color: #F8FAFC;
+        }
+
+        .notice-toggle:hover {
+            background: rgba(245, 158, 11, 0.18);
+        }
+
+        .notice-card.is-compact .notice-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .notice-text {
@@ -516,102 +580,18 @@
             font-weight: 600;
             font-family: 'Noto Sans Devanagari';
         }
-
-        .compact-notice-bar {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translate(-50%, -12px) scale(0.96);
-            width: min(94vw, 560px);
-            background: rgba(15, 23, 42, 0.88);
-            color: #F8FAFC;
-            border: 1px solid rgba(251, 191, 36, 0.45);
-            border-radius: 999px;
-            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
-            backdrop-filter: blur(14px);
-            z-index: 1100;
-            padding: 0.42rem 0.55rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-        }
-
-        .compact-notice-bar.show {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-            transform: translate(-50%, 0) scale(1);
-        }
-
-        .compact-notice-title {
-            font-size: 0.84rem;
-            font-weight: 700;
-            letter-spacing: 0.15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding-left: 0.25rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .compact-notice-toggle {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.12);
-            color: #F8FAFC;
-            border-radius: 999px;
-            padding: 0.35rem 0.7rem;
-            font-size: 0.74rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .compact-notice-toggle:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .compact-notice-panel {
-            position: fixed;
-            top: 56px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(94vw, 560px);
-            background: #ffffff;
-            border: 1px solid #FDE68A;
-            border-radius: 14px;
-            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.2);
-            padding: 0.8rem 0.9rem;
-            z-index: 1099;
-            display: none;
-        }
-
-        .compact-notice-panel.show {
-            display: block;
-        }
-
-        .compact-notice-panel .notice-text {
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-
-        .compact-notice-panel .notice-list {
-            gap: 0.35rem;
-            margin-top: 0.4rem;
-        }
-
-        .compact-notice-panel .notice-list li {
-            font-size: 0.84rem;
-            line-height: 1.45;
+        .notice-card.is-compact .notice-text .nepali,
+        .notice-card.is-compact .notice-list .nepali,
+        .notice-card.is-compact .notice-list li {
+            color: #E2E8F0;
         }
         
         @media (max-width: 768px) {
+    .notice-card.is-compact {
+        width: min(96vw, 520px);
+        top: 8px;
+    }
+
     header {
         padding: 12px 16px;
         background: #ffffff;
@@ -2935,22 +2915,6 @@
     
     <!-- Main Website Content -->
     <div class="website-content">
-        <div class="compact-notice-bar" id="compactNoticeBar" aria-hidden="true">
-            <span class="compact-notice-title"><i class="fas fa-bullhorn"></i> <span class="nepali">सूचना (Suchana)</span></span>
-            <button type="button" class="compact-notice-toggle" id="compactNoticeToggle">View</button>
-        </div>
-        <div class="compact-notice-panel" id="compactNoticePanel" aria-hidden="true">
-            <p class="notice-text">
-                <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
-            </p>
-            <ul class="notice-list">
-                <li><span class="nepali">थप जानकारी: श्रम कल सेन्टर ११४१ (NTC)</span></li>
-                <li><span class="nepali">सम्बन्धित घोषणापत्र (Declaration Form) अनिवार्य</span></li>
-                <li><span class="nepali">युरोप व्यक्तिगत नयाँ श्रम: कम्पनीको आधिकारिक इमेल आवश्यक</span></li>
-                <li><span class="nepali">गल्फ देश व्यक्तिगत नयाँ श्रम: Embassy letter आवश्यक</span></li>
-            </ul>
-        </div>
-
         <!-- Language Badge -->
         <div class="language-badge">
             <i class="fas fa-globe-asia"></i>
@@ -2980,17 +2944,22 @@
                     <p class="notice-title">
                         <span class="notice-title-main"><i class="fas fa-bullhorn"></i>
                         <span class="nepali">सूचना (Suchana)</span></span>
-                        <span class="notice-badge">Important</span>
+                        <span class="notice-actions">
+                            <span class="notice-badge">Important</span>
+                            <button type="button" class="notice-toggle" id="suchanaToggle" aria-expanded="true">Hide</button>
+                        </span>
                     </p>
-                    <p class="notice-text">
-                        <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
-                    </p>
-                    <ul class="notice-list">
-                        <li><span class="nepali">थप जानकारी: श्रम कल सेन्टर ११४१ (NTC)</span></li>
-                        <li><span class="nepali">सम्बन्धित घोषणापत्र (Declaration Form) अनिवार्य</span></li>
-                        <li><span class="nepali">युरोप व्यक्तिगत नयाँ श्रम: कम्पनीको आधिकारिक इमेल आवश्यक</span></li>
-                        <li><span class="nepali">गल्फ देश व्यक्तिगत नयाँ श्रम: Embassy letter आवश्यक</span></li>
-                    </ul>
+                    <div class="notice-details" id="suchanaDetails">
+                        <p class="notice-text">
+                            <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
+                        </p>
+                        <ul class="notice-list">
+                            <li><span class="nepali">थप जानकारी: श्रम कल सेन्टर ११४१ (NTC)</span></li>
+                            <li><span class="nepali">सम्बन्धित घोषणापत्र (Declaration Form) अनिवार्य</span></li>
+                            <li><span class="nepali">युरोप व्यक्तिगत नयाँ श्रम: कम्पनीको आधिकारिक इमेल आवश्यक</span></li>
+                            <li><span class="nepali">गल्फ देश व्यक्तिगत नयाँ श्रम: Embassy letter आवश्यक</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -4152,34 +4121,34 @@ const SmallFaq = {
     }
 };
 
-// ========== COMPACT SUCHANA BAR ==========
+// ========== SUCHANA CARD COMPACT MODE ==========
 const NoticeBar = {
     mainCard: null,
-    bar: null,
-    panel: null,
     toggleBtn: null,
+    details: null,
+    placeholder: null,
+    compactTriggerY: 0,
 
     init: function() {
         this.mainCard = Utils.getElement('mainSuchanaCard');
-        this.bar = Utils.getElement('compactNoticeBar');
-        this.panel = Utils.getElement('compactNoticePanel');
-        this.toggleBtn = Utils.getElement('compactNoticeToggle');
+        this.toggleBtn = Utils.getElement('suchanaToggle');
+        this.details = Utils.getElement('suchanaDetails');
 
-        if (!this.mainCard || !this.bar || !this.panel || !this.toggleBtn) return;
+        if (!this.mainCard || !this.toggleBtn || !this.details) return;
+
+        this.placeholder = document.createElement('div');
+        this.placeholder.style.display = 'none';
+        this.mainCard.parentNode.insertBefore(this.placeholder, this.mainCard);
+
+        this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
 
         this.toggleBtn.addEventListener('click', (event) => {
             event.stopPropagation();
-            const isOpen = this.panel.classList.toggle('show');
-            this.toggleBtn.textContent = isOpen ? 'Hide' : 'View';
-            this.panel.setAttribute('aria-hidden', String(!isOpen));
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!this.panel.classList.contains('show')) return;
-            if (!this.panel.contains(event.target) && !this.toggleBtn.contains(event.target)) {
-                this.panel.classList.remove('show');
-                this.toggleBtn.textContent = 'View';
-                this.panel.setAttribute('aria-hidden', 'true');
+            const isCollapsed = this.mainCard.classList.toggle('is-collapsed');
+            this.toggleBtn.textContent = isCollapsed ? 'Show' : 'Hide';
+            this.toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
+            if (this.mainCard.classList.contains('is-compact')) {
+                this.placeholder.style.height = `${this.mainCard.offsetHeight}px`;
             }
         });
 
@@ -4187,20 +4156,29 @@ const NoticeBar = {
             this.updateVisibility();
         }, 80), { passive: true });
 
+        window.addEventListener('resize', Utils.throttle(() => {
+            this.compactTriggerY = this.placeholder.getBoundingClientRect().top + window.scrollY + this.placeholder.offsetHeight;
+            this.updateVisibility();
+        }, 120));
+
         this.updateVisibility();
     },
 
     updateVisibility: function() {
-        const cardRect = this.mainCard.getBoundingClientRect();
-        const shouldShow = cardRect.bottom < 8;
+        const shouldCompact = window.scrollY > this.compactTriggerY;
 
-        this.bar.classList.toggle('show', shouldShow);
-        this.bar.setAttribute('aria-hidden', String(!shouldShow));
-
-        if (!shouldShow && this.panel.classList.contains('show')) {
-            this.panel.classList.remove('show');
-            this.toggleBtn.textContent = 'View';
-            this.panel.setAttribute('aria-hidden', 'true');
+        if (shouldCompact) {
+            this.mainCard.classList.add('is-compact', 'is-collapsed');
+            this.placeholder.style.display = 'block';
+            this.placeholder.style.height = `${this.mainCard.offsetHeight}px`;
+            this.toggleBtn.textContent = 'Show';
+            this.toggleBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            this.mainCard.classList.remove('is-compact', 'is-collapsed');
+            this.placeholder.style.display = 'none';
+            this.toggleBtn.textContent = 'Hide';
+            this.toggleBtn.setAttribute('aria-expanded', 'true');
+            this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
         }
     }
 };
