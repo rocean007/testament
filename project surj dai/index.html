@@ -1411,6 +1411,15 @@
             from { transform: translateX(100%) scale(0.8); opacity: 0; }
             to { transform: translateX(0) scale(1); opacity: 1; }
         }
+
+        @media (max-width: 500px) {
+            .notification {
+                left: 10px;
+                right: 10px;
+                min-width: 0;
+                padding: 1rem;
+            }
+        }
         
         /* Mountain Range Decoration */
         .mountain-decoration {
@@ -2855,8 +2864,8 @@
             }
             
             .calculator-popup {
-                width: 300px;
-                right: -10px;
+                width: min(300px, calc(100vw - 24px));
+                right: 0;
             }
         }
 
@@ -2867,8 +2876,8 @@
             }
             
             .calculator-popup {
-                width: 280px;
-                right: -15px;
+                width: min(280px, calc(100vw - 20px));
+                right: 0;
             }
             
             .floating-btn {
@@ -2879,12 +2888,6 @@
             
             .tab-content {
                 padding: 20px;
-            }
-        }
-
-        @media (max-width: 767px) {
-            .widget-container {
-                display: none !important;
             }
         }
 
