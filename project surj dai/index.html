@@ -449,38 +449,166 @@
         }
 
         .notice-section {
-            padding: 2rem 0 1rem;
+            padding: 1rem 0 0.5rem;
         }
 
         .notice-card {
-            background: linear-gradient(135deg, #fffef8, #ffffff);
-            border: 2px solid #FDE68A;
-            border-left: 6px solid var(--accent);
-            border-radius: var(--radius);
-            box-shadow: 0 10px 24px rgba(245, 158, 11, 0.12);
-            padding: 1.8rem 2rem;
+            background: linear-gradient(140deg, #fffdf5 0%, #ffffff 52%, #fff7df 100%);
+            border: 1px solid #FDE68A;
+            border-left: 4px solid var(--accent);
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.13);
+            padding: 1rem 1.15rem;
+            display: grid;
+            gap: 0.7rem;
         }
 
         .notice-title {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 10px;
-            margin-bottom: 1rem;
-            color: #92400E;
-            font-size: 1.2rem;
+            margin-bottom: 0;
+            color: #854D0E;
+            font-size: 1rem;
             font-weight: 700;
+        }
+
+        .notice-title-main {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notice-badge {
+            background: rgba(245, 158, 11, 0.13);
+            color: #92400E;
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 999px;
+            padding: 0.2rem 0.55rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            line-height: 1;
         }
 
         .notice-text {
             color: var(--dark);
-            line-height: 1.85;
-            font-size: 1.05rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
-        .notice-text .nepali {
+        .notice-list {
+            display: grid;
+            gap: 0.45rem;
+            margin-top: 0.25rem;
+            padding-left: 1.05rem;
+        }
+
+        .notice-list li {
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        .notice-text .nepali,
+        .notice-list .nepali {
             color: var(--dark);
             font-weight: 600;
             font-family: 'Noto Sans Devanagari';
+        }
+
+        .compact-notice-bar {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translate(-50%, -12px) scale(0.96);
+            width: min(94vw, 560px);
+            background: rgba(15, 23, 42, 0.88);
+            color: #F8FAFC;
+            border: 1px solid rgba(251, 191, 36, 0.45);
+            border-radius: 999px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
+            backdrop-filter: blur(14px);
+            z-index: 1100;
+            padding: 0.42rem 0.55rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+        }
+
+        .compact-notice-bar.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .compact-notice-title {
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding-left: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .compact-notice-toggle {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.12);
+            color: #F8FAFC;
+            border-radius: 999px;
+            padding: 0.35rem 0.7rem;
+            font-size: 0.74rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .compact-notice-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .compact-notice-panel {
+            position: fixed;
+            top: 56px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(94vw, 560px);
+            background: #ffffff;
+            border: 1px solid #FDE68A;
+            border-radius: 14px;
+            box-shadow: 0 16px 32px rgba(15, 23, 42, 0.2);
+            padding: 0.8rem 0.9rem;
+            z-index: 1099;
+            display: none;
+        }
+
+        .compact-notice-panel.show {
+            display: block;
+        }
+
+        .compact-notice-panel .notice-text {
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        .compact-notice-panel .notice-list {
+            gap: 0.35rem;
+            margin-top: 0.4rem;
+        }
+
+        .compact-notice-panel .notice-list li {
+            font-size: 0.84rem;
+            line-height: 1.45;
         }
         
         @media (max-width: 768px) {
@@ -1357,16 +1485,61 @@
             }
 
             .notice-card {
-                padding: 1.3rem 1.2rem;
+                padding: 0.85rem 0.88rem;
+                border-left-width: 3px;
             }
 
             .notice-title {
-                font-size: 1.05rem;
+                font-size: 0.9rem;
+            }
+
+            .notice-badge {
+                font-size: 0.68rem;
+                padding: 0.2rem 0.45rem;
             }
 
             .notice-text {
-                font-size: 0.98rem;
-                line-height: 1.75;
+                font-size: 0.86rem;
+                line-height: 1.5;
+            }
+
+            .notice-list {
+                padding-left: 0.95rem;
+                gap: 0.35rem;
+            }
+
+            .notice-list li {
+                font-size: 0.81rem;
+                line-height: 1.45;
+            }
+
+            .compact-notice-bar {
+                top: 8px;
+                width: min(96vw, 460px);
+                padding: 0.35rem 0.45rem;
+            }
+
+            .compact-notice-title {
+                font-size: 0.74rem;
+            }
+
+            .compact-notice-toggle {
+                font-size: 0.66rem;
+                padding: 0.3rem 0.55rem;
+            }
+
+            .compact-notice-panel {
+                top: 50px;
+                width: min(96vw, 460px);
+                padding: 0.7rem 0.72rem;
+            }
+
+            .compact-notice-panel .notice-text {
+                font-size: 0.79rem;
+            }
+
+            .compact-notice-panel .notice-list li {
+                font-size: 0.76rem;
             }
         }
         
@@ -2709,6 +2882,12 @@
             }
         }
 
+        @media (max-width: 767px) {
+            .widget-container {
+                display: none !important;
+            }
+        }
+
         .service-question {
             font-size: clamp(1rem, 2vw, 1.5rem);
             color: var(--secondary);
@@ -2753,6 +2932,22 @@
     
     <!-- Main Website Content -->
     <div class="website-content">
+        <div class="compact-notice-bar" id="compactNoticeBar" aria-hidden="true">
+            <span class="compact-notice-title"><i class="fas fa-bullhorn"></i> <span class="nepali">सूचना (Suchana)</span></span>
+            <button type="button" class="compact-notice-toggle" id="compactNoticeToggle">View</button>
+        </div>
+        <div class="compact-notice-panel" id="compactNoticePanel" aria-hidden="true">
+            <p class="notice-text">
+                <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
+            </p>
+            <ul class="notice-list">
+                <li><span class="nepali">थप जानकारी: श्रम कल सेन्टर ११४१ (NTC)</span></li>
+                <li><span class="nepali">सम्बन्धित घोषणापत्र (Declaration Form) अनिवार्य</span></li>
+                <li><span class="nepali">युरोप व्यक्तिगत नयाँ श्रम: कम्पनीको आधिकारिक इमेल आवश्यक</span></li>
+                <li><span class="nepali">गल्फ देश व्यक्तिगत नयाँ श्रम: Embassy letter आवश्यक</span></li>
+            </ul>
+        </div>
+
         <!-- Language Badge -->
         <div class="language-badge">
             <i class="fas fa-globe-asia"></i>
@@ -2778,20 +2973,21 @@
 
         <section class="notice-section">
             <div class="container">
-                <div class="notice-card animate-on-scroll">
+                <div class="notice-card animate-on-scroll" id="mainSuchanaCard">
                     <p class="notice-title">
-                        <i class="fas fa-bullhorn"></i>
-                        <span class="nepali">सूचना (Suchana)</span>
+                        <span class="notice-title-main"><i class="fas fa-bullhorn"></i>
+                        <span class="nepali">सूचना (Suchana)</span></span>
+                        <span class="notice-badge">Important</span>
                     </p>
                     <p class="notice-text">
-                        <span class="nepali">हजुरको देश परिबर्तन वा पहिलोचोटि श्रम को लागि पुनः मेडिकल र ओरिएन्टेशन अनिवार्य हुन्छ। ती ओरिएन्टेशन प्रक्रिया पूरा भएपछि मात्र हामीले डकुमेन्ट अपडेट गर्ने काम अगाडि बढाउन सक्छौं। त्यसपछि बाँकी सहजीकरण हाम्रो तर्फबाट।<br>
-                        थप जानकारी Govs श्रम कल सेन्टर ११४१ (NTC)<br><br>
-                        *सम्बन्धित घोषणापत्र (Declaration Form)<br>
-                        *युरोप व्यक्तिगत नया श्रमको लागी कम्पनी आधिकारिक इमेल चाहिन्छ !!<br>
-                        *gulf country को व्यक्तिगत नया श्रमको लागी embassy लेटर अनिवार्य चाहिन्छ !<br><br>
-                        ✔ सबै कागजातहरू तयार भएपछि तपाईंको श्रम स्वीकृति सजिलैसँग Approve हुनेछ।<br><br>
-                        धन्यवाद 🙏</span>
+                        <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
                     </p>
+                    <ul class="notice-list">
+                        <li><span class="nepali">थप जानकारी: श्रम कल सेन्टर ११४१ (NTC)</span></li>
+                        <li><span class="nepali">सम्बन्धित घोषणापत्र (Declaration Form) अनिवार्य</span></li>
+                        <li><span class="nepali">युरोप व्यक्तिगत नयाँ श्रम: कम्पनीको आधिकारिक इमेल आवश्यक</span></li>
+                        <li><span class="nepali">गल्फ देश व्यक्तिगत नयाँ श्रम: Embassy letter आवश्यक</span></li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -2862,7 +3058,7 @@
             <div class="container">
                 <h1 class="animate-on-scroll">Nepal's Fastest Work Permit Renewal &amp; Flight Ticket Booking — Kathmandu</h1>
                 <p class="animate-on-scroll" lang="ne" style="font-family:'Noto Sans Devanagari';color:var(--secondary);font-weight:600;font-size:1.1rem;margin-top:-0.5rem;margin-bottom:1rem">वैदेशिक रोजगार एपसँग आबद्ध संस्था</p>
-                <h2 class="animate-on-scroll">Online Shram Swikriti Renewal — Fast, Verified &amp; Government-Approved</h2>
+                <h2 class="animate-on-scroll">Online Shram Swikriti Renewal — Fast, Verified &amp; Easy Support</h2>
                 <p class="animate-on-scroll" style="transition-delay: 0.2s">Get expert assistance with <span class="highlight">Work Permit Renewal Assistance</span> and <span class="highlight">Flight Ticket Booking</span>. आवश्यकता अनुसार छिटो, भरपर्दो र उत्कृष्ट सेवा न्यूनतम सेवा शुल्कमा</p>
                 <p class="animate-on-scroll" style="transition-delay: 0.4s">तपाईंको श्रम नवीकरण गर्ने समय भएको छ? सस्तो टिकट खोज्दै हुनुहुन्छ? हामी तपाईंलाई सहयोग गर्न यहाँ छौं।</p>
             </div>
@@ -3269,6 +3465,7 @@ document.addEventListener('DOMContentLoaded', () => {
         FlightForm.init();
         FAQSystem.init();
         ButtonHandlers.init();
+        NoticeBar.init();
         FlyingPlanes.init();
         WelcomeAnimation.init();
         SmallFaq.init();
@@ -3949,6 +4146,59 @@ const SmallFaq = {
         window.addEventListener('scroll', function() {
             faqItem.classList.remove('active');
         });
+    }
+};
+
+// ========== COMPACT SUCHANA BAR ==========
+const NoticeBar = {
+    mainCard: null,
+    bar: null,
+    panel: null,
+    toggleBtn: null,
+
+    init: function() {
+        this.mainCard = Utils.getElement('mainSuchanaCard');
+        this.bar = Utils.getElement('compactNoticeBar');
+        this.panel = Utils.getElement('compactNoticePanel');
+        this.toggleBtn = Utils.getElement('compactNoticeToggle');
+
+        if (!this.mainCard || !this.bar || !this.panel || !this.toggleBtn) return;
+
+        this.toggleBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = this.panel.classList.toggle('show');
+            this.toggleBtn.textContent = isOpen ? 'Hide' : 'View';
+            this.panel.setAttribute('aria-hidden', String(!isOpen));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!this.panel.classList.contains('show')) return;
+            if (!this.panel.contains(event.target) && !this.toggleBtn.contains(event.target)) {
+                this.panel.classList.remove('show');
+                this.toggleBtn.textContent = 'View';
+                this.panel.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        window.addEventListener('scroll', Utils.throttle(() => {
+            this.updateVisibility();
+        }, 80), { passive: true });
+
+        this.updateVisibility();
+    },
+
+    updateVisibility: function() {
+        const cardRect = this.mainCard.getBoundingClientRect();
+        const shouldShow = cardRect.bottom < 8;
+
+        this.bar.classList.toggle('show', shouldShow);
+        this.bar.setAttribute('aria-hidden', String(!shouldShow));
+
+        if (!shouldShow && this.panel.classList.contains('show')) {
+            this.panel.classList.remove('show');
+            this.toggleBtn.textContent = 'View';
+            this.panel.setAttribute('aria-hidden', 'true');
+        }
     }
 };
 
