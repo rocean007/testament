@@ -243,6 +243,12 @@
             filter: brightness(1.1) contrast(1.1);
         }
         
+        @media (pointer: coarse) {
+            body::before {
+                background-attachment: scroll;
+            }
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -2759,7 +2765,7 @@
                 <div class="header-content">
                     <div class="logo">
                         <div class="logo-image">
-                            <img src="assets/aspl.jpg" alt="Annapurna Sewa Logo" width="60" height="60">
+                            <img src="assets/aspl.jpg" alt="Annapurna Sewa Logo" width="60" height="60" loading="eager" fetchpriority="high">
                         </div>
                         <div class="logo-text">
                             <p class="logo-name">Annapurna Sewa</p>
@@ -2975,7 +2981,7 @@
         <!-- FAQ Section -->
         <section class="faq-section">
             <div class="container">
-                <h2 class="faq-title animate-on-scroll">Frequently Asked Questions</h2>
+                <h2 class="faq-title animate-on-scroll">Frequently Asked Questions &mdash; Work Permit Renewal &amp; Flight Booking Nepal</h2>
                 
                 <div class="faq-categories">
                     <button class="faq-category-btn active" data-category="flight" type="button">
