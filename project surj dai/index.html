@@ -1502,33 +1502,19 @@
                 line-height: 1.45;
             }
 
-            .compact-notice-bar {
+            .notice-card.is-compact {
+                width: min(96vw, 460px);
                 top: 8px;
-                width: min(96vw, 460px);
-                padding: 0.35rem 0.45rem;
+                padding: 0.4rem 0.5rem;
             }
 
-            .compact-notice-title {
-                font-size: 0.74rem;
+            .notice-card.is-compact .notice-title {
+                font-size: 0.8rem;
             }
 
-            .compact-notice-toggle {
+            .notice-card.is-compact .notice-toggle {
                 font-size: 0.66rem;
-                padding: 0.3rem 0.55rem;
-            }
-
-            .compact-notice-panel {
-                top: 50px;
-                width: min(96vw, 460px);
-                padding: 0.7rem 0.72rem;
-            }
-
-            .compact-notice-panel .notice-text {
-                font-size: 0.79rem;
-            }
-
-            .compact-notice-panel .notice-list li {
-                font-size: 0.76rem;
+                padding: 0.28rem 0.55rem;
             }
         }
         
@@ -4125,30 +4111,36 @@ const SmallFaq = {
 const NoticeBar = {
     mainCard: null,
     toggleBtn: null,
-    details: null,
     placeholder: null,
     compactTriggerY: 0,
+    userCollapsed: false,
 
     init: function() {
         this.mainCard = Utils.getElement('mainSuchanaCard');
         this.toggleBtn = Utils.getElement('suchanaToggle');
-        this.details = Utils.getElement('suchanaDetails');
+        const details = Utils.getElement('suchanaDetails');
 
-        if (!this.mainCard || !this.toggleBtn || !this.details) return;
+        if (!this.mainCard || !this.toggleBtn || !details) return;
 
         this.placeholder = document.createElement('div');
         this.placeholder.style.display = 'none';
         this.mainCard.parentNode.insertBefore(this.placeholder, this.mainCard);
 
-        this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
+        this.recalculateTrigger();
 
         this.toggleBtn.addEventListener('click', (event) => {
             event.stopPropagation();
-            const isCollapsed = this.mainCard.classList.toggle('is-collapsed');
-            this.toggleBtn.textContent = isCollapsed ? 'Show' : 'Hide';
-            this.toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
-            if (this.mainCard.classList.contains('is-compact')) {
+            const isCompact = this.mainCard.classList.contains('is-compact');
+            if (isCompact) {
+                const isCollapsed = this.mainCard.classList.toggle('is-collapsed');
+                this.toggleBtn.textContent = isCollapsed ? 'Show' : 'Hide';
+                this.toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
                 this.placeholder.style.height = `${this.mainCard.offsetHeight}px`;
+            } else {
+                this.userCollapsed = !this.userCollapsed;
+                this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
+                this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
+                this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
             }
         });
 
@@ -4157,11 +4149,15 @@ const NoticeBar = {
         }, 80), { passive: true });
 
         window.addEventListener('resize', Utils.throttle(() => {
-            this.compactTriggerY = this.placeholder.getBoundingClientRect().top + window.scrollY + this.placeholder.offsetHeight;
+            this.recalculateTrigger();
             this.updateVisibility();
         }, 120));
 
         this.updateVisibility();
+    },
+
+    recalculateTrigger: function() {
+        this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
     },
 
     updateVisibility: function() {
@@ -4174,11 +4170,12 @@ const NoticeBar = {
             this.toggleBtn.textContent = 'Show';
             this.toggleBtn.setAttribute('aria-expanded', 'false');
         } else {
-            this.mainCard.classList.remove('is-compact', 'is-collapsed');
+            this.mainCard.classList.remove('is-compact');
+            this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
             this.placeholder.style.display = 'none';
-            this.toggleBtn.textContent = 'Hide';
-            this.toggleBtn.setAttribute('aria-expanded', 'true');
-            this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
+            this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
+            this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
+            this.recalculateTrigger();
         }
     }
 };
