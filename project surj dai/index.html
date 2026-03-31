@@ -332,6 +332,41 @@
         .hero:hover .highlight::after {
             transform: scaleX(1);
         }
+
+        .notice-section {
+            padding: 2rem 0 1rem;
+        }
+
+        .notice-card {
+            background: linear-gradient(135deg, #fffef8, #ffffff);
+            border: 2px solid #FDE68A;
+            border-left: 6px solid var(--accent);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 24px rgba(245, 158, 11, 0.12);
+            padding: 1.8rem 2rem;
+        }
+
+        .notice-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+            color: #92400E;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .notice-text {
+            color: var(--dark);
+            line-height: 1.85;
+            font-size: 1.05rem;
+        }
+
+        .notice-text .nepali {
+            color: var(--dark);
+            font-weight: 600;
+            font-family: 'Noto Sans Devanagari';
+        }
         
         @media (max-width: 768px) {
     header {
@@ -1204,6 +1239,19 @@
             
             .faq-item.active .faq-answer {
                 padding: 1.5rem;
+            }
+
+            .notice-card {
+                padding: 1.3rem 1.2rem;
+            }
+
+            .notice-title {
+                font-size: 1.05rem;
+            }
+
+            .notice-text {
+                font-size: 0.98rem;
+                line-height: 1.75;
             }
         }
         
@@ -2613,6 +2661,26 @@
             </div>
         </header>
 
+        <section class="notice-section">
+            <div class="container">
+                <div class="notice-card animate-on-scroll">
+                    <h2 class="notice-title">
+                        <i class="fas fa-bullhorn"></i>
+                        <span class="nepali">सूचना (Suchana)</span>
+                    </h2>
+                    <p class="notice-text">
+                        <span class="nepali">हजुरको देश परिबर्तन वा पहिलोचोटि श्रम को लागि पुनः मेडिकल र ओरिएन्टेशन अनिवार्य हुन्छ। ती ओरिएन्टेशन प्रक्रिया पूरा भएपछि मात्र हामीले डकुमेन्ट अपडेट गर्ने काम अगाडि बढाउन सक्छौं। त्यसपछि बाँकी सहजीकरण हाम्रो तर्फबाट।<br>
+                        थप जानकारी Govs श्रम कल सेन्टर ११४१ (NTC)<br><br>
+                        *सम्बन्धित घोषणापत्र (Declaration Form)<br>
+                        *युरोप व्यक्तिगत नया श्रमको लागी कम्पनी आधिकारिक इमेल चाहिन्छ !!<br>
+                        *gulf country को व्यक्तिगत नया श्रमको लागी embassy लेटर अनिवार्य चाहिन्छ !<br><br>
+                        ✔ सबै कागजातहरू तयार भएपछि तपाईंको श्रम स्वीकृति सजिलैसँग Approve हुनेछ।<br><br>
+                        धन्यवाद 🙏</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Calculator Widget -->
     <div class="widget-container">
         <!-- Floating Button -->
@@ -2834,11 +2902,18 @@
                     
                     <div class="faq-item" data-delay="0.3">
                         <div class="faq-question">
-                            कुन कागजातहरू चाहिन्छ?
+                            पुलिस रिपोर्टका लागि आवश्यक कागजातहरू के के हुन्?
                             <i class="fas fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p><span class="nepali">पासपोर्ट/पहिचान प्रमाण, पुरानो वर्क पर्मिट, हालको रोजगार प्रमाणपत्र।</span></p>
+                            <p><span class="nepali">* पासपोर्ट साइज फोटो<br>
+                            * नागरिकताको अगाडि–पछाडिको फोटो<br>
+                            * पासपोर्ट (भएमा)<br>
+                            * नेपालको सक्रिय मोबाइल नम्बर र इमेल आइडी<br>
+                            * विवाहित भएमा विवाह दर्ताको फोटो<br>
+                            * आमा–बुवा तथा हजुरबा–आमाको पूरा नाम<br>
+                            * स्थायी ठेगाना<br><br>
+                            सूचना: यो प्रक्रिया तपाईँले आफैँ अनलाइनमार्फत गर्न सक्नुहुन्छ। सहजीकरण आवश्यक भएमा मात्र कागजातहरू पठाइदिनुहोला।</span></p>
                         </div>
                     </div>
                     
