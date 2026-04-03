@@ -4374,8 +4374,10 @@ const NoticeBar = {
     toggleBtn: null,
     placeholder: null,
     expandedHeight: 0,
+    compactHeight: 0,
     userCollapsed: false,
     isCompact: false,
+    isOpen: false,
     header: null,
 
     init: function() {
@@ -4388,19 +4390,40 @@ const NoticeBar = {
 
         this.placeholder = document.createElement('div');
         this.placeholder.style.display = 'none';
+        this.placeholder.style.transition = 'height 0.28s cubic-bezier(0.4, 0, 0.2, 1)';
         this.mainCard.parentNode.insertBefore(this.placeholder, this.mainCard);
 
-        this.measureExpandedHeight();
+        this.measureHeights();
 
         this.toggleBtn.addEventListener('click', (event) => {
             event.stopPropagation();
-            const isCompact = this.mainCard.classList.contains('is-compact');
-            if (isCompact) {
-                const targetTop = Math.max(this.placeholder.getBoundingClientRect().top + window.scrollY - 24, 0);
-                window.scrollTo({ top: targetTop, behavior: 'smooth' });
+            if (this.isCompact) {
+                this.isOpen = !this.isOpen;
+                this.renderState();
             } else {
                 this.userCollapsed = !this.userCollapsed;
-                this.applyExpandedState();
+                this.renderState();
+                this.measureHeights();
+            }
+        });
+
+        this.mainCard.addEventListener('click', (event) => {
+            if (!this.isCompact || event.target.closest('.notice-toggle')) {
+                return;
+            }
+
+            this.isOpen = !this.isOpen;
+            this.renderState();
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!this.isCompact || !this.isOpen) {
+                return;
+            }
+
+            if (!this.mainCard.contains(event.target)) {
+                this.isOpen = false;
+                this.renderState();
             }
         });
 
@@ -4409,28 +4432,32 @@ const NoticeBar = {
         }, 80), { passive: true });
 
         window.addEventListener('resize', Utils.throttle(() => {
-            this.measureExpandedHeight();
+            this.measureHeights();
             this.updateVisibility();
         }, 120));
 
+        this.renderState();
         this.updateVisibility();
     },
 
-    measureExpandedHeight: function() {
-        const hadCompact = this.mainCard.classList.contains('is-compact');
+    measureHeights: function() {
+        const previousCompact = this.isCompact;
+        const previousOpen = this.isOpen;
+
+        this.isCompact = false;
+        this.isOpen = false;
         this.mainCard.classList.remove('is-compact');
         this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
         this.expandedHeight = this.mainCard.offsetHeight;
-        if (hadCompact) {
-            this.mainCard.classList.add('is-compact');
-        }
-    },
 
-    applyExpandedState: function() {
-        this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
-        this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
-        this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
-        this.measureExpandedHeight();
+        this.mainCard.classList.add('is-compact');
+        this.mainCard.classList.remove('is-open');
+        this.mainCard.classList.add('is-collapsed');
+        this.compactHeight = this.mainCard.offsetHeight;
+
+        this.isCompact = previousCompact;
+        this.isOpen = previousOpen && previousCompact;
+        this.renderState();
     },
 
     getCompactTopOffset: function() {
@@ -4446,6 +4473,26 @@ const NoticeBar = {
         return 14;
     },
 
+    renderState: function() {
+        const shouldCollapse = this.isCompact ? !this.isOpen : this.userCollapsed;
+
+        this.mainCard.classList.toggle('is-compact', this.isCompact);
+        this.mainCard.classList.toggle('is-open', this.isCompact && this.isOpen);
+        this.mainCard.classList.toggle('is-collapsed', shouldCollapse);
+
+        if (this.isCompact) {
+            this.placeholder.style.display = 'block';
+            this.placeholder.style.height = `${this.compactHeight}px`;
+            this.toggleBtn.textContent = this.isOpen ? 'Close' : 'Open';
+            this.toggleBtn.setAttribute('aria-expanded', String(this.isOpen));
+        } else {
+            this.placeholder.style.height = '0px';
+            this.placeholder.style.display = 'none';
+            this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
+            this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
+        }
+    },
+
     updateVisibility: function() {
         const anchor = this.placeholder.style.display === 'block' ? this.placeholder : this.mainCard;
         const anchorRect = anchor.getBoundingClientRect();
@@ -4453,26 +4500,22 @@ const NoticeBar = {
         document.documentElement.style.setProperty('--notice-compact-top', `${compactTopOffset}px`);
 
         const shouldCompact = window.scrollY > 80 && anchorRect.bottom <= compactTopOffset;
+        let stateChanged = false;
 
-        if (shouldCompact === this.isCompact) {
-            if (shouldCompact) {
-                this.placeholder.style.height = `${this.expandedHeight}px`;
-            }
-            return;
+        if (this.isCompact && this.isOpen) {
+            this.isOpen = false;
+            stateChanged = true;
         }
 
-        this.isCompact = shouldCompact;
+        if (shouldCompact !== this.isCompact) {
+            this.isCompact = shouldCompact;
+            stateChanged = true;
+        }
 
-        if (shouldCompact) {
-            this.mainCard.classList.add('is-compact', 'is-collapsed');
-            this.placeholder.style.display = 'block';
-            this.placeholder.style.height = `${this.expandedHeight}px`;
-            this.toggleBtn.textContent = 'Open';
-            this.toggleBtn.setAttribute('aria-expanded', 'false');
-        } else {
-            this.mainCard.classList.remove('is-compact');
-            this.placeholder.style.display = 'none';
-            this.applyExpandedState();
+        if (stateChanged) {
+            this.renderState();
+        } else if (this.isCompact) {
+            this.placeholder.style.height = `${this.compactHeight}px`;
         }
     }
 };
