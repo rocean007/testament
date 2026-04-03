@@ -495,6 +495,10 @@
             display: none;
         }
 
+        .notice-card.is-compact .notice-details {
+            display: none;
+        }
+
         .notice-title {
             display: flex;
             align-items: center;
@@ -755,6 +759,12 @@
             margin-bottom: 2rem;
             flex-grow: 1;
             cursor: default !important;
+        }
+
+        .service-faq-list {
+            display: grid;
+            gap: 0.9rem;
+            margin-top: 1.25rem;
         }
         
         .feature-list {
@@ -1250,6 +1260,22 @@
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             background: linear-gradient(to bottom, #F8FAFC, #FFFFFF);
             border-top: 1px solid transparent;
+        }
+
+        .faq-answer .faq-list-ordered {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--gray);
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .faq-answer .faq-list-ordered li {
+            line-height: 1.8;
+        }
+
+        .faq-answer .faq-list-ordered strong {
+            color: var(--dark);
         }
         
         .faq-item.active .faq-answer {
@@ -3041,20 +3067,39 @@
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">छिटो, सजिलो, भरपर्दो</span></li>
                                 <li><i class="fas fa-check-circle"></i> <span class="nepali">सजिलो प्रोसेस, फास्ट रिजल्ट</span></li>
                             </ul>
-                            
-¥                       <div class="faq-item">
-                        <div class="faq-question">
-                            अबश्यक कागजात के के हुन त ?
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p><span class="nepali">आवश्यक कागजातहरू:
-                                ✅ पासपोर्ट <br>
-                                ✅ भिसा / भिसा कार्ड <br>
-                                ✅ आगमन (Arrival) र प्रस्थान (Departure) स्ट्याम्प <br>
-                                ✅ कम्पनी नाम परिवर्तन भएको भए नयाँ एग्रिमेन्ट पेपर अनिवार्य <br> </span></p>
-                        </div>
-                    </div>
+                            <div class="service-faq-list">
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        अबश्यक कागजात के के हुन त ?
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p><span class="nepali">आवश्यक कागजातहरू:
+                                            ✅ पासपोर्ट <br>
+                                            ✅ भिसा / भिसा कार्ड <br>
+                                            ✅ आगमन (Arrival) र प्रस्थान (Departure) स्ट्याम्प <br>
+                                            ✅ कम्पनी नाम परिवर्तन भएको भए नयाँ एग्रिमेन्ट पेपर अनिवार्य <br></span></p>
+                                    </div>
+                                </div>
+
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        श्रम स्वीकृति गरेर जाँदा केके फाइदा श्रमिकलाई हुन्छ ?
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p><span class="nepali">वैदेशिक रोजगारमा विदेश जानु अघि श्रम स्वीकृति गरेर जानाले श्रमिकलाई तलका फाइदाहरू हुन्छ:</span></p>
+                                        <ol class="faq-list-ordered">
+                                            <li><span class="nepali"><strong>कानुनी सुरक्षा:</strong> श्रम स्वीकृति लिँदा श्रमिकलाई काम गर्ने देशको सरकारबाट कानुनी सुरक्षा मिल्छ। यसले श्रमिकलाई काम गर्दा कुनै समस्या परेमा कानुनी सहारा दिने काम गर्छ।</span></li>
+                                            <li><span class="nepali"><strong>सही तलब र कामका शर्तहरू:</strong> श्रम स्वीकृतिमा श्रमिकलाई निर्धारित तलब र काम गर्ने घण्टा, छुट्टी, कार्य वातावरण जस्ता शर्तहरू सुनिश्चित गरिन्छ।</span></li>
+                                            <li><span class="nepali"><strong>कामको स्थिरता:</strong> बिना श्रम स्वीकृतिका काम अवैध मानिन्छ, जसले श्रमिकलाई कानुनी समस्यामा पुर्याउन सक्छ। स्वीकृति लिँदा काम स्थिर र वैध (लिगल) हुन्छ।</span></li>
+                                            <li><span class="nepali"><strong>स्वास्थ्य र सुरक्षा:</strong> श्रम स्वीकृति लिँदा श्रमिकलाई स्वास्थ्य बीमा र काम गर्ने क्रममा सुरक्षा सुनिश्चित गरिन्छ।</span></li>
+                                            <li><span class="nepali"><strong>कसैसँग ठगीको डर कम:</strong> श्रम स्वीकृति लिएको श्रमिकलाई ठगीको सामना गर्नुपर्ने सम्भावना कम हुन्छ, किनकि यो वैध (लिगल) प्रक्रिया हो।</span></li>
+                                        </ol>
+                                        <p><span class="nepali">यसैले, श्रम स्वीकृति गरेर जानाले श्रमिकलाई सुरक्षित, कानुनी, र सन्तुलित कार्य वातावरण दिन्छ। श्रम स्वीकृति बिना विदेशमा काम गर्न जानु कानुनी समस्या निम्त्याउन सक्छ र तपाईंको हक अधिकार सुरक्षित रहन सक्दैन।</span></p>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="service-question">
@@ -4085,23 +4130,27 @@ const FlightForm = {
 
 const SmallFaq = {
     init: function() {
-        const faqItem = document.querySelector('.faq-item');
-        if (!faqItem) return;
-        
-        const question = faqItem.querySelector('.faq-question');
-        
-        question.addEventListener('click', function(e) {
-            e.stopPropagation();
-            faqItem.classList.add('active');
+        const faqItems = document.querySelectorAll('.service-card .faq-item');
+        if (!faqItems.length) return;
+
+        const closeAll = () => {
+            faqItems.forEach((item) => item.classList.remove('active'));
+        };
+
+        faqItems.forEach((faqItem) => {
+            const question = faqItem.querySelector('.faq-question');
+            if (!question) return;
+
+            question.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const shouldOpen = !faqItem.classList.contains('active');
+                closeAll();
+                faqItem.classList.toggle('active', shouldOpen);
+            });
         });
-        
-        document.addEventListener('click', function() {
-            faqItem.classList.remove('active');
-        });
-        
-        window.addEventListener('scroll', function() {
-            faqItem.classList.remove('active');
-        });
+
+        document.addEventListener('click', closeAll);
+        window.addEventListener('scroll', closeAll, { passive: true });
     }
 };
 
@@ -4110,7 +4159,7 @@ const NoticeBar = {
     mainCard: null,
     toggleBtn: null,
     placeholder: null,
-    compactTriggerY: 0,
+    expandedHeight: 0,
     userCollapsed: false,
 
     init: function() {
@@ -4124,21 +4173,19 @@ const NoticeBar = {
         this.placeholder.style.display = 'none';
         this.mainCard.parentNode.insertBefore(this.placeholder, this.mainCard);
 
-        this.recalculateTrigger();
+        this.measureExpandedHeight();
 
         this.toggleBtn.addEventListener('click', (event) => {
             event.stopPropagation();
             const isCompact = this.mainCard.classList.contains('is-compact');
             if (isCompact) {
-                const isCollapsed = this.mainCard.classList.toggle('is-collapsed');
-                this.toggleBtn.textContent = isCollapsed ? 'Show' : 'Hide';
-                this.toggleBtn.setAttribute('aria-expanded', String(!isCollapsed));
-                this.placeholder.style.height = `${this.mainCard.offsetHeight}px`;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
                 this.userCollapsed = !this.userCollapsed;
                 this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
                 this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
                 this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
+                this.measureExpandedHeight();
             }
         });
 
@@ -4147,25 +4194,29 @@ const NoticeBar = {
         }, 80), { passive: true });
 
         window.addEventListener('resize', Utils.throttle(() => {
-            this.recalculateTrigger();
+            this.measureExpandedHeight();
             this.updateVisibility();
         }, 120));
 
         this.updateVisibility();
     },
 
-    recalculateTrigger: function() {
-        this.compactTriggerY = this.mainCard.getBoundingClientRect().top + window.scrollY + this.mainCard.offsetHeight - 8;
+    measureExpandedHeight: function() {
+        this.mainCard.classList.remove('is-compact');
+        this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
+        this.expandedHeight = this.mainCard.offsetHeight;
     },
 
     updateVisibility: function() {
-        const shouldCompact = window.scrollY > this.compactTriggerY;
+        const anchor = this.placeholder.style.display === 'block' ? this.placeholder : this.mainCard;
+        const anchorRect = anchor.getBoundingClientRect();
+        const shouldCompact = window.scrollY > 40 && anchorRect.top <= 10;
 
         if (shouldCompact) {
             this.mainCard.classList.add('is-compact', 'is-collapsed');
             this.placeholder.style.display = 'block';
-            this.placeholder.style.height = `${this.mainCard.offsetHeight}px`;
-            this.toggleBtn.textContent = 'Show';
+            this.placeholder.style.height = `${this.expandedHeight}px`;
+            this.toggleBtn.textContent = 'Open';
             this.toggleBtn.setAttribute('aria-expanded', 'false');
         } else {
             this.mainCard.classList.remove('is-compact');
@@ -4173,7 +4224,7 @@ const NoticeBar = {
             this.placeholder.style.display = 'none';
             this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
             this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
-            this.recalculateTrigger();
+            this.measureExpandedHeight();
         }
     }
 };
@@ -4183,7 +4234,7 @@ const NoticeBar = {
 const FAQSystem = {
     init: function() {
         const categoryBtns = document.querySelectorAll('.faq-category-btn');
-        const faqItems = document.querySelectorAll('.faq-item');
+        const faqItems = document.querySelectorAll('.faq-section .faq-item');
         
         // Category switching
         categoryBtns.forEach(btn => {
