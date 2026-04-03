@@ -2125,7 +2125,7 @@
         .stats {
             display: grid;
             width: 100%;
-            min-width: device-width;
+            min-width: 100%;
             padding: 20px;
         }
         
