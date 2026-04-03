@@ -506,6 +506,13 @@
             backdrop-filter: blur(18px);
             gap: 0.35rem;
             padding: 0.7rem 0.85rem;
+            cursor: pointer;
+        }
+
+        .notice-card.is-compact.is-open {
+            gap: 0.7rem;
+            padding-bottom: 0.85rem;
+            cursor: default;
         }
 
         .notice-card.is-compact::before {
@@ -540,13 +547,23 @@
             transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease, transform 0.28s ease, margin-top 0.28s ease;
         }
 
-        .notice-card.is-collapsed .notice-details,
-        .notice-card.is-compact .notice-details {
+        .notice-card.is-collapsed:not(.is-compact) .notice-details,
+        .notice-card.is-compact:not(.is-open) .notice-details {
             max-height: 0;
             opacity: 0;
             transform: translateY(-10px);
             margin-top: -0.1rem;
             pointer-events: none;
+        }
+
+        .notice-card.is-compact.is-open .notice-details {
+            max-height: min(56vh, 420px);
+            opacity: 1;
+            transform: translateY(0);
+            margin-top: 0;
+            pointer-events: auto;
+            overflow-y: auto;
+            padding-right: 0.25rem;
         }
 
         .notice-title {
@@ -648,9 +665,13 @@
             flex-shrink: 0;
         }
 
-        .notice-card.is-compact .notice-summary {
+        .notice-card.is-compact:not(.is-open) .notice-summary {
             display: flex;
             animation: fadeIn 0.2s ease;
+        }
+
+        .notice-card.is-compact.is-open .notice-summary {
+            display: none;
         }
 
         .notice-text {
