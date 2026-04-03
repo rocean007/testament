@@ -509,12 +509,6 @@
             cursor: pointer;
         }
 
-        .notice-card.is-compact.is-open {
-            gap: 0.7rem;
-            padding-bottom: 0.85rem;
-            cursor: default;
-        }
-
         .notice-card.is-compact::before {
             background: linear-gradient(120deg, rgba(59, 130, 246, 0.22), rgba(251, 191, 36, 0.16));
         }
@@ -531,8 +525,7 @@
         }
 
         .notice-title,
-        .notice-details,
-        .notice-summary {
+        .notice-details {
             position: relative;
             z-index: 1;
         }
@@ -547,23 +540,13 @@
             transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease, transform 0.28s ease, margin-top 0.28s ease;
         }
 
-        .notice-card.is-collapsed:not(.is-compact) .notice-details,
-        .notice-card.is-compact:not(.is-open) .notice-details {
+        .notice-card.is-collapsed .notice-details,
+        .notice-card.is-compact .notice-details {
             max-height: 0;
             opacity: 0;
             transform: translateY(-10px);
             margin-top: -0.1rem;
             pointer-events: none;
-        }
-
-        .notice-card.is-compact.is-open .notice-details {
-            max-height: min(56vh, 420px);
-            opacity: 1;
-            transform: translateY(0);
-            margin-top: 0;
-            pointer-events: auto;
-            overflow-y: auto;
-            padding-right: 0.25rem;
         }
 
         .notice-title {
@@ -645,32 +628,6 @@
         }
 
         .notice-summary {
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.9rem;
-            color: #E2E8F0;
-            font-size: var(--text-sm);
-            line-height: 1.45;
-        }
-
-        .notice-summary .nepali {
-            font-family: 'Noto Sans Devanagari';
-            font-weight: 600;
-            color: #F8FAFC;
-        }
-
-        .notice-summary i {
-            color: #FBBF24;
-            flex-shrink: 0;
-        }
-
-        .notice-card.is-compact:not(.is-open) .notice-summary {
-            display: flex;
-            animation: fadeIn 0.2s ease;
-        }
-
-        .notice-card.is-compact.is-open .notice-summary {
             display: none;
         }
 
@@ -3170,10 +3127,6 @@
                             <button type="button" class="notice-toggle" id="suchanaToggle" aria-expanded="true">Hide</button>
                         </span>
                     </p>
-                    <div class="notice-summary" aria-hidden="true">
-                        <span class="nepali">मुख्य सूचना लुकाइएको छ। पूरा विवरण हेर्न Open गर्नुहोस्।</span>
-                        <i class="fas fa-arrow-up-right-from-square"></i>
-                    </div>
                     <div class="notice-details" id="suchanaDetails">
                         <p class="notice-text">
                             <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
@@ -4373,11 +4326,9 @@ const NoticeBar = {
     mainCard: null,
     toggleBtn: null,
     placeholder: null,
-    expandedHeight: 0,
     compactHeight: 0,
     userCollapsed: false,
     isCompact: false,
-    isOpen: false,
     header: null,
 
     init: function() {
@@ -4393,17 +4344,16 @@ const NoticeBar = {
         this.placeholder.style.transition = 'height 0.28s cubic-bezier(0.4, 0, 0.2, 1)';
         this.mainCard.parentNode.insertBefore(this.placeholder, this.mainCard);
 
-        this.measureHeights();
+        this.measureCompactHeight();
 
         this.toggleBtn.addEventListener('click', (event) => {
             event.stopPropagation();
             if (this.isCompact) {
-                this.isOpen = !this.isOpen;
-                this.renderState();
+                this.scrollToOriginal();
             } else {
                 this.userCollapsed = !this.userCollapsed;
                 this.renderState();
-                this.measureHeights();
+                this.measureCompactHeight();
             }
         });
 
@@ -4412,19 +4362,7 @@ const NoticeBar = {
                 return;
             }
 
-            this.isOpen = !this.isOpen;
-            this.renderState();
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!this.isCompact || !this.isOpen) {
-                return;
-            }
-
-            if (!this.mainCard.contains(event.target)) {
-                this.isOpen = false;
-                this.renderState();
-            }
+            this.scrollToOriginal();
         });
 
         window.addEventListener('scroll', Utils.throttle(() => {
@@ -4432,7 +4370,7 @@ const NoticeBar = {
         }, 80), { passive: true });
 
         window.addEventListener('resize', Utils.throttle(() => {
-            this.measureHeights();
+            this.measureCompactHeight();
             this.updateVisibility();
         }, 120));
 
@@ -4440,24 +4378,24 @@ const NoticeBar = {
         this.updateVisibility();
     },
 
-    measureHeights: function() {
+    measureCompactHeight: function() {
         const previousCompact = this.isCompact;
-        const previousOpen = this.isOpen;
 
         this.isCompact = false;
-        this.isOpen = false;
         this.mainCard.classList.remove('is-compact');
-        this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
-        this.expandedHeight = this.mainCard.offsetHeight;
-
+        this.mainCard.classList.toggle('is-collapsed', true);
         this.mainCard.classList.add('is-compact');
-        this.mainCard.classList.remove('is-open');
         this.mainCard.classList.add('is-collapsed');
         this.compactHeight = this.mainCard.offsetHeight;
 
         this.isCompact = previousCompact;
-        this.isOpen = previousOpen && previousCompact;
         this.renderState();
+    },
+
+    scrollToOriginal: function() {
+        const targetTop = Math.max(this.placeholder.getBoundingClientRect().top + window.scrollY - this.getCompactTopOffset() - 12, 0);
+        this.userCollapsed = false;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
     },
 
     getCompactTopOffset: function() {
@@ -4474,17 +4412,14 @@ const NoticeBar = {
     },
 
     renderState: function() {
-        const shouldCollapse = this.isCompact ? !this.isOpen : this.userCollapsed;
-
         this.mainCard.classList.toggle('is-compact', this.isCompact);
-        this.mainCard.classList.toggle('is-open', this.isCompact && this.isOpen);
-        this.mainCard.classList.toggle('is-collapsed', shouldCollapse);
+        this.mainCard.classList.toggle('is-collapsed', this.isCompact || this.userCollapsed);
 
         if (this.isCompact) {
             this.placeholder.style.display = 'block';
             this.placeholder.style.height = `${this.compactHeight}px`;
-            this.toggleBtn.textContent = this.isOpen ? 'Close' : 'Open';
-            this.toggleBtn.setAttribute('aria-expanded', String(this.isOpen));
+            this.toggleBtn.textContent = 'Open';
+            this.toggleBtn.setAttribute('aria-expanded', 'false');
         } else {
             this.placeholder.style.height = '0px';
             this.placeholder.style.display = 'none';
@@ -4500,19 +4435,8 @@ const NoticeBar = {
         document.documentElement.style.setProperty('--notice-compact-top', `${compactTopOffset}px`);
 
         const shouldCompact = window.scrollY > 80 && anchorRect.bottom <= compactTopOffset;
-        let stateChanged = false;
-
-        if (this.isCompact && this.isOpen) {
-            this.isOpen = false;
-            stateChanged = true;
-        }
-
         if (shouldCompact !== this.isCompact) {
             this.isCompact = shouldCompact;
-            stateChanged = true;
-        }
-
-        if (stateChanged) {
             this.renderState();
         } else if (this.isCompact) {
             this.placeholder.style.height = `${this.compactHeight}px`;
