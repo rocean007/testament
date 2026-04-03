@@ -1,0 +1,68 @@
+import type { Airport, Country } from '../types';
+
+export const AIRPORTS: Airport[] = [
+  { name: 'Tribhuvan International Airport', city: 'Kathmandu', country: 'Nepal', code: 'KTM' },
+  { name: 'Pokhara International Airport', city: 'Pokhara', country: 'Nepal', code: 'PKR' },
+  { name: 'Gautam Buddha International Airport', city: 'Bhairahawa', country: 'Nepal', code: 'BWA' },
+  { name: 'Hamad International Airport', city: 'Doha', country: 'Qatar', code: 'DOH' },
+  { name: 'Dubai International Airport', city: 'Dubai', country: 'UAE', code: 'DXB' },
+  { name: 'Abu Dhabi International Airport', city: 'Abu Dhabi', country: 'UAE', code: 'AUH' },
+  { name: 'King Fahd International Airport', city: 'Dammam', country: 'Saudi Arabia', code: 'DMM' },
+  { name: 'King Abdulaziz International Airport', city: 'Jeddah', country: 'Saudi Arabia', code: 'JED' },
+  { name: 'King Khalid International Airport', city: 'Riyadh', country: 'Saudi Arabia', code: 'RUH' },
+  { name: 'Kuwait International Airport', city: 'Kuwait City', country: 'Kuwait', code: 'KWI' },
+  { name: 'Bahrain International Airport', city: 'Manama', country: 'Bahrain', code: 'BAH' },
+  { name: 'Muscat International Airport', city: 'Muscat', country: 'Oman', code: 'MCT' },
+  { name: 'Indira Gandhi International Airport', city: 'Delhi', country: 'India', code: 'DEL' },
+  { name: 'Chhatrapati Shivaji Maharaj International Airport', city: 'Mumbai', country: 'India', code: 'BOM' },
+  { name: 'Kuala Lumpur International Airport', city: 'Kuala Lumpur', country: 'Malaysia', code: 'KUL' },
+  { name: 'Singapore Changi Airport', city: 'Singapore', country: 'Singapore', code: 'SIN' },
+  { name: 'Suvarnabhumi Airport', city: 'Bangkok', country: 'Thailand', code: 'BKK' },
+  { name: 'Hong Kong International Airport', city: 'Hong Kong', country: 'China', code: 'HKG' },
+  { name: 'Incheon International Airport', city: 'Seoul', country: 'South Korea', code: 'ICN' },
+  { name: 'Tokyo Narita International Airport', city: 'Tokyo', country: 'Japan', code: 'NRT' },
+  { name: 'Beijing Capital International Airport', city: 'Beijing', country: 'China', code: 'PEK' },
+  { name: 'Shanghai Pudong International Airport', city: 'Shanghai', country: 'China', code: 'PVG' },
+  { name: 'Heathrow Airport', city: 'London', country: 'UK', code: 'LHR' },
+  { name: 'Charles de Gaulle Airport', city: 'Paris', country: 'France', code: 'CDG' },
+  { name: 'Frankfurt Airport', city: 'Frankfurt', country: 'Germany', code: 'FRA' },
+  { name: 'Amsterdam Airport Schiphol', city: 'Amsterdam', country: 'Netherlands', code: 'AMS' },
+  { name: 'Istanbul Airport', city: 'Istanbul', country: 'Turkey', code: 'IST' },
+  { name: 'John F. Kennedy International Airport', city: 'New York', country: 'USA', code: 'JFK' },
+  { name: 'Los Angeles International Airport', city: 'Los Angeles', country: 'USA', code: 'LAX' },
+  { name: 'Toronto Pearson International Airport', city: 'Toronto', country: 'Canada', code: 'YYZ' },
+  { name: 'Vancouver International Airport', city: 'Vancouver', country: 'Canada', code: 'YVR' },
+  { name: 'Sydney Kingsford Smith Airport', city: 'Sydney', country: 'Australia', code: 'SYD' },
+  { name: 'Melbourne Airport', city: 'Melbourne', country: 'Australia', code: 'MEL' },
+  { name: 'Soekarno-Hatta International Airport', city: 'Jakarta', country: 'Indonesia', code: 'CGK' },
+  { name: 'Ninoy Aquino International Airport', city: 'Manila', country: 'Philippines', code: 'MNL' },
+  { name: 'Colombo Bandaranaike International Airport', city: 'Colombo', country: 'Sri Lanka', code: 'CMB' },
+  { name: 'Dhaka Hazrat Shahjalal International Airport', city: 'Dhaka', country: 'Bangladesh', code: 'DAC' },
+];
+
+export const COUNTRIES: Country[] = [
+  { name: 'Qatar', flag: '🇶🇦' },
+  { name: 'Saudi Arabia', flag: '🇸🇦' },
+  { name: 'United Arab Emirates (UAE)', flag: '🇦🇪' },
+  { name: 'Kuwait', flag: '🇰🇼' },
+  { name: 'Bahrain', flag: '🇧🇭' },
+  { name: 'Oman', flag: '🇴🇲' },
+  { name: 'Malaysia', flag: '🇲🇾' },
+  { name: 'Japan', flag: '🇯🇵' },
+  { name: 'South Korea', flag: '🇰🇷' },
+  { name: 'Israel', flag: '🇮🇱' },
+  { name: 'Maldives', flag: '🇲🇻' },
+  { name: 'Romania', flag: '🇷🇴' },
+  { name: 'Cyprus', flag: '🇨🇾' },
+  { name: 'Poland', flag: '🇵🇱' },
+  { name: 'Portugal', flag: '🇵🇹' },
+  { name: 'Mauritius', flag: '🇲🇺' },
+  { name: 'Seychelles', flag: '🇸🇨' },
+];
+
+export const FEE_STRUCTURE = {
+  upTo35: { sameCompany: 8284, companyChange: 8434 },
+  above35: { sameCompany: 9507, companyChange: 9657 },
+} as const;
+
+export const WHATSAPP_NUMBER = '9779802398981';
