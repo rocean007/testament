@@ -676,17 +676,32 @@
     }
 
     header {
-        padding: 12px 16px;
+                padding: 14px 16px;
         background: #ffffff;
         backdrop-filter: none;
         position: relative;
         border-bottom: 1px solid rgba(59, 130, 246, 0.15);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
+
+            .header-content {
+                justify-content: flex-start;
+            }
+
+            .logo {
+                width: 100%;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 12px;
+                text-align: left;
+                padding-right: 0;
+            }
     
     .logo-image {
         width: 50px;
         height: 50px;
+                flex-shrink: 0;
     }
     
     .logo-text .logo-name {
@@ -694,6 +709,12 @@
         background: none;
         color: #09376a;
     }
+
+            .logo-text p {
+                font-size: 0.8rem;
+                line-height: 1.35;
+                flex-wrap: wrap;
+            }
 }
 
         /* Services Grid - Responsive */
@@ -1520,14 +1541,14 @@
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
+                flex-direction: row;
+                gap: 0.75rem;
+                text-align: left;
             }
             
             .logo {
-                flex-direction: column;
-                text-align: center;
+                flex-direction: row;
+                text-align: left;
             }
             .hero h2 {
                 font-size: 2.5rem;
@@ -2930,30 +2951,52 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .widget-container {
-                top: 15px;
-                right: 15px;
+                top: auto;
+                right: 14px;
+                bottom: 18px;
+                z-index: 1105;
+            }
+
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+                padding: 0;
+                justify-content: center;
+                border-radius: 50%;
+                box-shadow: 0 12px 28px rgba(52, 152, 219, 0.3);
+            }
+
+            .btn-text {
+                display: none;
             }
             
             .calculator-popup {
-                width: min(300px, calc(100vw - 24px));
+                position: absolute;
+                bottom: 74px;
+                right: 0;
+                width: min(320px, calc(100vw - 28px));
+                max-height: min(70vh, 520px);
+                overflow-y: auto;
                 right: 0;
             }
         }
 
         @media (max-width: 500px) {
             .widget-container {
-                top: 10px;
+                bottom: 14px;
                 right: 10px;
             }
             
             .calculator-popup {
-                width: min(280px, calc(100vw - 20px));
+                width: min(300px, calc(100vw - 20px));
                 right: 0;
             }
             
             .floating-btn {
-                width: 55px;
-                height: 55px;
+                width: 56px;
+                height: 56px;
+                min-width: 56px;
                 font-size: 22px;
             }
             
