@@ -210,6 +210,7 @@
             --gradient-secondary: linear-gradient(135deg, var(--secondary), #B91C1C);
             --gradient-accent: linear-gradient(135deg, var(--accent), #D97706);
             --gradient-mountain: linear-gradient(135deg, #10B981, #059669, #047857);
+            --notice-compact-top: 14px;
         }
         
         * {
@@ -449,35 +450,50 @@
         }
 
         .notice-section {
-            padding: 1rem 0 0.5rem;
+            padding: 1.15rem 0 0.65rem;
         }
 
         .notice-card {
             background: linear-gradient(140deg, #fffdf5 0%, #ffffff 52%, #fff7df 100%);
             border: 1px solid #FDE68A;
             border-left: 4px solid var(--accent);
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.13);
-            padding: 1rem 1.15rem;
+            border-radius: 18px;
+            box-shadow: 0 16px 36px rgba(245, 158, 11, 0.16);
+            padding: 1.05rem 1.2rem;
             display: grid;
-            gap: 0.7rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+            gap: 0.8rem;
+            overflow: hidden;
+            position: relative;
+            will-change: transform, opacity;
+            transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .notice-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(251, 191, 36, 0.18), transparent 42%);
+            pointer-events: none;
         }
 
         .notice-card.is-compact {
             position: fixed;
-            top: 10px;
+            top: var(--notice-compact-top);
             left: 50%;
-            transform: translateX(-50%);
-            width: min(94vw, 560px);
+            transform: translateX(-50%) scale(0.985);
+            width: min(94vw, 600px);
             z-index: 1100;
             border-left-width: 1px;
             border-color: rgba(251, 191, 36, 0.45);
-            background: rgba(15, 23, 42, 0.9);
-            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.28);
-            backdrop-filter: blur(14px);
-            gap: 0;
-            padding: 0.5rem 0.6rem;
+            background: rgba(15, 23, 42, 0.86);
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+            backdrop-filter: blur(18px);
+            gap: 0.35rem;
+            padding: 0.7rem 0.85rem;
+        }
+
+        .notice-card.is-compact::before {
+            background: linear-gradient(120deg, rgba(59, 130, 246, 0.22), rgba(251, 191, 36, 0.16));
         }
 
         .notice-card.is-compact .notice-title,
@@ -491,12 +507,30 @@
             display: none;
         }
 
-        .notice-card.is-collapsed .notice-details {
-            display: none;
+        .notice-title,
+        .notice-details,
+        .notice-summary {
+            position: relative;
+            z-index: 1;
         }
 
+        .notice-details {
+            display: grid;
+            gap: 0.7rem;
+            max-height: 420px;
+            opacity: 1;
+            overflow: hidden;
+            transform: translateY(0);
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease, transform 0.28s ease, margin-top 0.28s ease;
+        }
+
+        .notice-card.is-collapsed .notice-details,
         .notice-card.is-compact .notice-details {
-            display: none;
+            max-height: 0;
+            opacity: 0;
+            transform: translateY(-10px);
+            margin-top: -0.1rem;
+            pointer-events: none;
         }
 
         .notice-title {
@@ -514,6 +548,23 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+        }
+
+        .notice-title-main i {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(251, 191, 36, 0.28));
+            color: #B45309;
+            flex-shrink: 0;
+        }
+
+        .notice-card.is-compact .notice-title-main i {
+            background: rgba(255, 255, 255, 0.14);
+            color: #F8FAFC;
         }
 
         .notice-actions {
@@ -538,11 +589,11 @@
             background: rgba(255, 255, 255, 0.7);
             color: #854D0E;
             border-radius: 999px;
-            padding: 0.3rem 0.65rem;
+            padding: 0.42rem 0.82rem;
             font-size: 0.74rem;
             font-weight: 700;
             cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
         }
 
         .notice-card.is-compact .notice-toggle {
@@ -553,10 +604,37 @@
 
         .notice-toggle:hover {
             background: rgba(245, 158, 11, 0.18);
+            transform: translateY(-1px);
         }
 
         .notice-card.is-compact .notice-toggle:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+
+        .notice-summary {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.9rem;
+            color: #E2E8F0;
+            font-size: 0.84rem;
+            line-height: 1.45;
+        }
+
+        .notice-summary .nepali {
+            font-family: 'Noto Sans Devanagari';
+            font-weight: 600;
+            color: #F8FAFC;
+        }
+
+        .notice-summary i {
+            color: #FBBF24;
+            flex-shrink: 0;
+        }
+
+        .notice-card.is-compact .notice-summary {
+            display: flex;
+            animation: fadeIn 0.2s ease;
         }
 
         .notice-text {
@@ -594,6 +672,7 @@
     .notice-card.is-compact {
         width: min(96vw, 520px);
         top: 8px;
+        padding: 0.65rem 0.72rem;
     }
 
     header {
@@ -1501,6 +1580,7 @@
             .notice-card {
                 padding: 0.85rem 0.88rem;
                 border-left-width: 3px;
+                border-radius: 16px;
             }
 
             .notice-title {
@@ -1530,7 +1610,7 @@
             .notice-card.is-compact {
                 width: min(96vw, 460px);
                 top: 8px;
-                padding: 0.4rem 0.5rem;
+                padding: 0.55rem 0.62rem;
             }
 
             .notice-card.is-compact .notice-title {
@@ -2959,6 +3039,10 @@
                             <button type="button" class="notice-toggle" id="suchanaToggle" aria-expanded="true">Hide</button>
                         </span>
                     </p>
+                    <div class="notice-summary" aria-hidden="true">
+                        <span class="nepali">मुख्य सूचना लुकाइएको छ। पूरा विवरण हेर्न Open गर्नुहोस्।</span>
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                    </div>
                     <div class="notice-details" id="suchanaDetails">
                         <p class="notice-text">
                             <span class="nepali">देश परिवर्तन वा पहिलो पटक श्रमका लागि पुन: मेडिकल र ओरिएन्टेशन आवश्यक हुन्छ। यी प्रक्रिया पूरा भएपछि डकुमेन्ट अपडेटको काम अघि बढ्छ।</span>
@@ -4160,10 +4244,13 @@ const NoticeBar = {
     placeholder: null,
     expandedHeight: 0,
     userCollapsed: false,
+    isCompact: false,
+    header: null,
 
     init: function() {
         this.mainCard = Utils.getElement('mainSuchanaCard');
         this.toggleBtn = Utils.getElement('suchanaToggle');
+        this.header = Utils.getElement('mainHeader');
         const details = Utils.getElement('suchanaDetails');
 
         if (!this.mainCard || !this.toggleBtn || !details) return;
@@ -4178,13 +4265,11 @@ const NoticeBar = {
             event.stopPropagation();
             const isCompact = this.mainCard.classList.contains('is-compact');
             if (isCompact) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const targetTop = Math.max(this.placeholder.getBoundingClientRect().top + window.scrollY - 24, 0);
+                window.scrollTo({ top: targetTop, behavior: 'smooth' });
             } else {
                 this.userCollapsed = !this.userCollapsed;
-                this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
-                this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
-                this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
-                this.measureExpandedHeight();
+                this.applyExpandedState();
             }
         });
 
@@ -4201,15 +4286,51 @@ const NoticeBar = {
     },
 
     measureExpandedHeight: function() {
+        const hadCompact = this.mainCard.classList.contains('is-compact');
         this.mainCard.classList.remove('is-compact');
         this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
         this.expandedHeight = this.mainCard.offsetHeight;
+        if (hadCompact) {
+            this.mainCard.classList.add('is-compact');
+        }
+    },
+
+    applyExpandedState: function() {
+        this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
+        this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
+        this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
+        this.measureExpandedHeight();
+    },
+
+    getCompactTopOffset: function() {
+        if (!this.header) {
+            return 14;
+        }
+
+        const headerRect = this.header.getBoundingClientRect();
+        if (headerRect.bottom > 0) {
+            return Math.max(14, Math.round(headerRect.bottom + 10));
+        }
+
+        return 14;
     },
 
     updateVisibility: function() {
         const anchor = this.placeholder.style.display === 'block' ? this.placeholder : this.mainCard;
         const anchorRect = anchor.getBoundingClientRect();
-        const shouldCompact = window.scrollY > 40 && anchorRect.top <= 10;
+        const compactTopOffset = this.getCompactTopOffset();
+        document.documentElement.style.setProperty('--notice-compact-top', `${compactTopOffset}px`);
+
+        const shouldCompact = window.scrollY > 80 && anchorRect.bottom <= compactTopOffset;
+
+        if (shouldCompact === this.isCompact) {
+            if (shouldCompact) {
+                this.placeholder.style.height = `${this.expandedHeight}px`;
+            }
+            return;
+        }
+
+        this.isCompact = shouldCompact;
 
         if (shouldCompact) {
             this.mainCard.classList.add('is-compact', 'is-collapsed');
@@ -4219,11 +4340,8 @@ const NoticeBar = {
             this.toggleBtn.setAttribute('aria-expanded', 'false');
         } else {
             this.mainCard.classList.remove('is-compact');
-            this.mainCard.classList.toggle('is-collapsed', this.userCollapsed);
             this.placeholder.style.display = 'none';
-            this.toggleBtn.textContent = this.userCollapsed ? 'Show' : 'Hide';
-            this.toggleBtn.setAttribute('aria-expanded', String(!this.userCollapsed));
-            this.measureExpandedHeight();
+            this.applyExpandedState();
         }
     }
 };
